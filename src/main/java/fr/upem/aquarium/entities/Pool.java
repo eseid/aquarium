@@ -4,6 +4,7 @@ import fr.upem.aquarium.entities.enumeration.State;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -19,7 +20,9 @@ public class Pool {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "capacity")
     private int capacity;
+    @Column(name = "volume")
     private double volume;
     @Enumerated(EnumType.ORDINAL)
     private State state;

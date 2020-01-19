@@ -16,4 +16,6 @@ public interface AnimalService {
     Optional<Animal> findById(Long id);
 
     void deleteById(Long id);
+
+
 }
