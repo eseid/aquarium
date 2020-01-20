@@ -32,7 +32,7 @@ public class AnimalController {
        return new ResponseEntity<Animal>(animalService.findById(id).get(), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") Long id){
         animalService.deleteById(id);
         return new ResponseEntity<Void>(HttpStatus.OK);

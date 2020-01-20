@@ -1,6 +1,5 @@
 package fr.upem.aquarium.entities;
 
-import fr.upem.aquarium.entities.enumeration.RoleName;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -17,7 +16,7 @@ import java.util.*;
 @ToString
 @Entity
 @Table(name = "personnels")
-public class Personnel {
+public class Personnal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,7 +57,7 @@ public class Personnel {
             inverseJoinColumns = @JoinColumn(name = "sector_id"))
     private Set<Sector> listOfSectors;
 
-    public Personnel(String firstName, String lastName, String address, Instant birthDay, String socialSecurityNumber, Set<Role> listOfRoles) {
+    public Personnal(String firstName, String lastName, String address, Instant birthDay, String socialSecurityNumber, Set<Role> listOfRoles) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -71,7 +70,7 @@ public class Personnel {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Personnel personnel = (Personnel) o;
+        Personnal personnel = (Personnal) o;
         return id.equals(personnel.id) &&
                 firstName.equals(personnel.firstName) &&
                 lastName.equals(personnel.lastName) &&
