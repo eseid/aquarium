@@ -8,10 +8,12 @@ import fr.upem.aquarium.services.SectorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.logging.Logger;
 
+@Service
 public class SectorServiceImpl implements SectorService {
     private Logger logger = Logger.getLogger(SectorServiceImpl.class.getName());
     @Autowired

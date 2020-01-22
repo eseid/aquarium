@@ -2,6 +2,7 @@ package fr.upem.aquarium.services;
 
 import fr.upem.aquarium.entities.Species;
 import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 

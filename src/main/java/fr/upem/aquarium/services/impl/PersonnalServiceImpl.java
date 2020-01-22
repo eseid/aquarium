@@ -10,10 +10,14 @@ import fr.upem.aquarium.services.PoolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 import java.util.logging.Logger;
 
+@Service
 public class PersonnalServiceImpl implements PersonnalService {
     private Logger logger = Logger.getLogger(PersonnalServiceImpl.class.getName());
     @Autowired
