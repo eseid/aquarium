@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/animals")
 public class AnimalController {
@@ -22,9 +24,9 @@ public class AnimalController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<Animal>> findAll(@RequestParam(name = "page", defaultValue = "0") int page,
+    public ResponseEntity<List<Animal>> findAll(@RequestParam(name = "page", defaultValue = "0") int page,
                                                 @RequestParam(name = "size", defaultValue = "10") int size) {
-        return new ResponseEntity<Page<Animal>>(animalService.findAll(page, size), HttpStatus.OK);
+        return new ResponseEntity<List<Animal>>(animalService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

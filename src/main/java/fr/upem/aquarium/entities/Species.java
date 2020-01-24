@@ -28,8 +28,6 @@ public class Species {
     @Column(name = "threat_level")
     private int threatLevel;
 
-    @OneToMany(mappedBy = "species", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Animal> listOfAnimals;
 
     public Species(int lifeExpectancy, String diet, boolean isThreat, int threatLevel) {
         this.lifeExpectancy = lifeExpectancy;

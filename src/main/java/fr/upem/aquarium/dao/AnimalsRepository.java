@@ -6,7 +6,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AnimalsRepository extends PagingAndSortingRepository<Animal, Long> {
+public interface AnimalsRepository extends JpaRepository<Animal, Long> {
 
     Boolean existsByName(String name);
 }

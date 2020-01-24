@@ -55,7 +55,7 @@ public class Personnal {
             name = "personnel_sector",
             joinColumns = @JoinColumn(name = "personnel_id"),
             inverseJoinColumns = @JoinColumn(name = "sector_id"))
-    private Set<Sector> listOfSectors;
+    private Set<Sector>  c;
 
     public Personnal(String firstName, String lastName, String address, Instant birthDay, String socialSecurityNumber, Set<Role> listOfRoles) {
         this.firstName = firstName;

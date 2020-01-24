@@ -11,7 +11,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.logging.Logger;
 
 @Service
@@ -40,11 +42,8 @@ public class AnimalServiceImpl implements AnimalService {
     }
 
     @Override
-    public Page<Animal> findAll(int page, int size) {
-        if(page < 0 || size < 0)
-            throw new ExistsException("page and size should be superior to zero");
-        Pageable pageable = PageRequest.of(page, size);
-        return animalsRepository.findAll(pageable);
+    public List<Animal> findAll() {
+        return animalsRepository.findAll();
     }
 
     @Override
