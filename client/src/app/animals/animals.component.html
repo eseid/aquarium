@@ -1,0 +1,23 @@
+
+
+<div class="container">
+    <h1>animals</h1>
+    <table class="table table-bordered table-inverse">
+      <tr>
+        <th>Owner Name</th>
+        <th>Email</th>
+        <th>Model</th>
+        <th class="text-right">Purchase Price</th>
+      </tr>
+      <ng-container *ngIf="($animals | async)">
+    </ng-container>  
+
+
+      <tr  *ngFor="let animal of animals">
+        <td>
+          {{animal.Name}}
+        </td>
+      </tr>
+    </table>
+  </div>
+  
