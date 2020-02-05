@@ -41,6 +41,7 @@ public class AquariumApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
         Sector sector = this.sectorRepository.save(new Sector("Secteur 1","Est"));
         Pool pool = poolRepository.save(new Pool(5, 34.5, State.CLEAN, sector));
         speciesRepository.save(new Species(3,"test", false, 5));
