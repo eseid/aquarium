@@ -1,0 +1,22 @@
+<div class="row">
+  <h3>List des animaux</h3>
+</div>
+<div class="row">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col" *ngFor="let label of columnLabels" class="text-uppercase">{{label}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let animal of listOfAnimals">
+      <td scope="row">{{animal.id}}</td>
+      <td>{{animal.name}}</td>
+      <td>{{animal.sexe}}</td>
+      <td>{{animal.destinctiveSign}}</td>
+      <td>{{animal.checkinDate | date:'medium'}}</td>
+      <td>{{animal.checkoutDate | date:'medium'}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
