@@ -1,12 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {AnimalsComponent } from './animals/animals.component'
+import {HomeComponent} from './component/layout/home/home.component';
 
 
 const routes: Routes = [
   {
-    path:'animals',
-    component: AnimalsComponent
+    path: 'home',
+    component: HomeComponent
+  },
+  {
+    path: 'animals-management',
+    loadChildren: () => import('./component/animals-management/animals-management.module').then(mod => mod.AnimalsManagementModule)
+  },
+  {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
   }
 ];
 
@@ -15,4 +24,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [AnimalsComponent]
