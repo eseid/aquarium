@@ -6,9 +6,6 @@ import fr.upem.aquarium.exceptions.ExistsException;
 import fr.upem.aquarium.exceptions.NotFoundException;
 import fr.upem.aquarium.services.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -65,5 +62,13 @@ public class AnimalServiceImpl implements AnimalService {
         }
         animalsRepository.deleteById(id);
         logger.info("L'animal avec l'ID = {} a été supprimée avec succès");
+    }
+
+    @Override
+    public Set<Animal> findAllByPoolId(Long poolId) {
+        logger.info("Récupération de la liste des animaux du pool avc  l'ID = " + poolId);
+        Set<Animal> animalsList = this.animalsRepository.findAllByPoolId(poolId);
+        logger.info("La liste de animaux recupérée + " + animalsList);
+        return animalsList;
     }
 }

@@ -1,19 +1,13 @@
 package fr.upem.aquarium.entities;
 
 import fr.upem.aquarium.entities.enumeration.RoleName;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.*;
 
 /**
- * 
+ *
  */
-@Data
-@NoArgsConstructor
-@ToString
 @Entity
 @Table(name = "roles")
 public class Role {
@@ -26,7 +20,26 @@ public class Role {
     @Column(name = "role_name")
     private RoleName roleName;
 
+    public Role() {
+    }
+
     public Role(RoleName roleName) {
+        this.roleName = roleName;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public RoleName getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(RoleName roleName) {
         this.roleName = roleName;
     }
 
@@ -42,5 +55,13 @@ public class Role {
     @Override
     public int hashCode() {
         return Objects.hash(id, roleName);
+    }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id=" + id +
+                ", roleName=" + roleName +
+                '}';
     }
 }

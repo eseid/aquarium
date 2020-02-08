@@ -26,6 +26,8 @@ public class AnimalController {
     @GetMapping
     public ResponseEntity<List<Animal>> findAll(@RequestParam(name = "page", defaultValue = "0") int page,
                                                 @RequestParam(name = "size", defaultValue = "10") int size) {
+        List<Animal> animals = animalService.findAll();
+        System.out.println(animals.size());
         return new ResponseEntity<List<Animal>>(animalService.findAll(), HttpStatus.OK);
     }
 

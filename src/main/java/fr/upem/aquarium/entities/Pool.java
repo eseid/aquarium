@@ -1,18 +1,11 @@
 package fr.upem.aquarium.entities;
 
 import fr.upem.aquarium.entities.enumeration.State;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
 
-@Data
-@ToString
-@NoArgsConstructor
 @Entity
 @Table(name = "pools")
 public class Pool {
@@ -27,9 +20,6 @@ public class Pool {
     @Enumerated(EnumType.ORDINAL)
     private State state;
 
-    @OneToMany(mappedBy = "pool", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Animal> listOfAnimals;
-
     @ManyToOne
     @JoinColumn(name = "sector_id")
     private Sector sector;
@@ -41,11 +31,62 @@ public class Pool {
             inverseJoinColumns = @JoinColumn(name = "activity_id"))
     private Set<Activity> listOfActivities;
 
+    public Pool() {
+    }
+
     public Pool(int capacity, double volume, State state, Sector sector) {
         this.capacity = capacity;
         this.volume = volume;
         this.state = state;
         this.sector = sector;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public double getVolume() {
+        return volume;
+    }
+
+    public void setVolume(double volume) {
+        this.volume = volume;
+    }
+
+    public State getState() {
+        return state;
+    }
+
+    public void setState(State state) {
+        this.state = state;
+    }
+
+    public Sector getSector() {
+        return sector;
+    }
+
+    public void setSector(Sector sector) {
+        this.sector = sector;
+    }
+
+    public Set<Activity> getListOfActivities() {
+        return listOfActivities;
+    }
+
+    public void setListOfActivities(Set<Activity> listOfActivities) {
+        this.listOfActivities = listOfActivities;
     }
 
     @Override
@@ -62,5 +103,16 @@ public class Pool {
     @Override
     public int hashCode() {
         return Objects.hash(id, capacity, volume, state);
+    }
+
+    @Override
+    public String toString() {
+        return "Pool{" +
+                "id=" + id +
+                ", capacity=" + capacity +
+                ", volume=" + volume +
+                ", state=" + state +
+                ", sector=" + sector +
+                '}';
     }
 }

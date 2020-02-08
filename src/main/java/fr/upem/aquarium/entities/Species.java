@@ -1,18 +1,11 @@
 package fr.upem.aquarium.entities;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-
 import javax.persistence.*;
 import java.util.*;
 
 /**
- * 
+ *
  */
-@Data
-@NoArgsConstructor
-@ToString
 @Entity
 @Table(name = "species")
 public class Species {
@@ -28,11 +21,53 @@ public class Species {
     @Column(name = "threat_level")
     private int threatLevel;
 
+    public Species() {
+    }
 
     public Species(int lifeExpectancy, String diet, boolean isThreat, int threatLevel) {
         this.lifeExpectancy = lifeExpectancy;
         this.diet = diet;
         this.isThreat = isThreat;
+        this.threatLevel = threatLevel;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getLifeExpectancy() {
+        return lifeExpectancy;
+    }
+
+    public void setLifeExpectancy(int lifeExpectancy) {
+        this.lifeExpectancy = lifeExpectancy;
+    }
+
+    public String getDiet() {
+        return diet;
+    }
+
+    public void setDiet(String diet) {
+        this.diet = diet;
+    }
+
+    public boolean isThreat() {
+        return isThreat;
+    }
+
+    public void setThreat(boolean threat) {
+        isThreat = threat;
+    }
+
+    public int getThreatLevel() {
+        return threatLevel;
+    }
+
+    public void setThreatLevel(int threatLevel) {
         this.threatLevel = threatLevel;
     }
 
@@ -50,5 +85,16 @@ public class Species {
     @Override
     public int hashCode() {
         return Objects.hash(id, lifeExpectancy, diet, isThreat);
+    }
+
+    @Override
+    public String toString() {
+        return "Species{" +
+                "id=" + id +
+                ", lifeExpectancy=" + lifeExpectancy +
+                ", diet='" + diet + '\'' +
+                ", isThreat=" + isThreat +
+                ", threatLevel=" + threatLevel +
+                '}';
     }
 }

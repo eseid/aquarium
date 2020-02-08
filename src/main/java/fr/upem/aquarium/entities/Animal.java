@@ -1,9 +1,5 @@
-package fr.upem.aquarium.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+package fr.upem.aquarium.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,12 +7,8 @@ import java.time.Instant;
 import java.util.*;
 
 /**
- * 
+ *
  */
-
-@Data
-@ToString
-@NoArgsConstructor
 @Entity
 @Table(name = "animals")
 public class Animal implements Serializable {
@@ -41,12 +33,81 @@ public class Animal implements Serializable {
     @JoinColumn(name = "species_id")
     private Species species;
 
-    public Animal(String name, String sexe, String destinctiveSign, Instant checkinDate, Instant checkoutDate) {
+    public Animal() {
+    }
+
+    public Animal(String name, String sexe, String destinctiveSign, Instant checkinDate, Instant checkoutDate, Species species, Pool pool) {
         this.name = name;
         this.sexe = sexe;
         this.destinctiveSign = destinctiveSign;
         this.checkinDate = checkinDate;
         this.checkoutDate = checkoutDate;
+        this.species = species;
+        this.pool = pool;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSexe() {
+        return sexe;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
+
+    public String getDestinctiveSign() {
+        return destinctiveSign;
+    }
+
+    public void setDestinctiveSign(String destinctiveSign) {
+        this.destinctiveSign = destinctiveSign;
+    }
+
+    public Instant getCheckinDate() {
+        return checkinDate;
+    }
+
+    public void setCheckinDate(Instant checkinDate) {
+        this.checkinDate = checkinDate;
+    }
+
+    public Instant getCheckoutDate() {
+        return checkoutDate;
+    }
+
+    public void setCheckoutDate(Instant checkoutDate) {
+        this.checkoutDate = checkoutDate;
+    }
+
+    public Pool getPool() {
+        return pool;
+    }
+
+    public void setPool(Pool pool) {
+        this.pool = pool;
+    }
+
+    public Species getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(Species species) {
+        this.species = species;
     }
 
     @Override
@@ -63,5 +124,19 @@ public class Animal implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, sexe, destinctiveSign);
+    }
+
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", sexe='" + sexe + '\'' +
+                ", destinctiveSign='" + destinctiveSign + '\'' +
+                ", checkinDate=" + checkinDate +
+                ", checkoutDate=" + checkoutDate +
+                ", pool=" + pool +
+                ", species=" + species +
+                '}';
     }
 }

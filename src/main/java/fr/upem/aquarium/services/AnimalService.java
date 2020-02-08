@@ -19,5 +19,7 @@ public interface AnimalService {
 
     void deleteById(Long id);
 
+    Set<Animal> findAllByPoolId(Long poolId);
+
 
 }
