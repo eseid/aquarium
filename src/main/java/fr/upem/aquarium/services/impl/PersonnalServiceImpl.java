@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
@@ -25,8 +26,6 @@ public class PersonnalServiceImpl implements PersonnalService {
 
     @Override
     public Personnal save(Personnal personnal) {
-        if(personnalRepository.existsById(personnal.getId()))
-            throw new ExistsException( "Personnal with id " + personnal.getId()+ " exist!");
         return personnalRepository.save(personnal);
     }
 
@@ -41,12 +40,8 @@ public class PersonnalServiceImpl implements PersonnalService {
     }
 
     @Override
-    public Page<Personnal> findAll(int page, int size) {
-        if(page < 0 || size < 0){
-            logger.severe("size of page or size have  negative value");
-            throw new ExistsException("error in value of page or size");
-        }
-        return personnalRepository.findAll(PageRequest.of(page, size));
+    public List<Personnal> findAll() {
+        return personnalRepository.findAll();
     }
 
     @Override

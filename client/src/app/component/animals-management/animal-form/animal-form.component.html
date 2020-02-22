@@ -1,0 +1,69 @@
+<div class="modal-header">
+  <h4 class="modal-title">Hi there!</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form name="form">
+    <div class="form-group row">
+      <label for="name" class="col-sm-2 col-form-label">Nom</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="name" name ="name" placeholder="Nom" [(ngModel)]="animal.name">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="sexe" class="col-sm-2 col-form-label">Sexe</label>
+      <div class="col-sm-10">
+        <select class="form-control" id="sexe" name ="sexe" [(ngModel)]="animal.sexe">
+          <option [ngValue]="'Male'" selected>Male</option>
+          <option [ngValue]="'Femelle'">Femelle</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="destinctiveSign" class="col-sm-2 col-form-label">Signe distictif</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="destinctiveSign" name="destinctiveSign" placeholder="Signe distictif" [(ngModel)]="animal.destinctiveSign">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="checkinDate" class="col-sm-2 col-form-label">Date d'entrée</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="checkinDate"  name="checkinDate" placeholder="dd/MM/yyyy" [(ngModel)]="animal.checkinDate">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="checkoutDate" class="col-sm-2 col-form-label">Date de sortie</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="checkoutDate" name="checkoutDate" placeholder="dd/MM/yyyy" [(ngModel)]="animal.checkoutDate">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="pool" class="col-sm-2 col-form-label">Bassin</label>
+      <div class="col-sm-10">
+        <select class="form-control" id="pool" [(ngModel)]="animal.pool" name="pool">
+          <option [ngValue]="pool" *ngFor="let pool of listOfPool">{{pool.capacity}} / {{pool.volume}} m3</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="species" class="col-sm-2 col-form-label">Espèce</label>
+      <div class="col-sm-10">
+        <select class="form-control" id="species" [(ngModel)]="animal.species" name="species">
+          <option [ngValue]="species" *ngFor="let species of listOfSpecies">{{species.id}}</option>
+        </select>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="save()">Sauvegarder</button>
+  <button type="button" class="btn btn-outline-default" (click)="activeModal.close('Close click')">Annuler</button>
+</div>

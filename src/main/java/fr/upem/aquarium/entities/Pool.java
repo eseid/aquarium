@@ -1,8 +1,10 @@
 package fr.upem.aquarium.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import fr.upem.aquarium.entities.enumeration.State;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -13,6 +15,8 @@ public class Pool {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "name")
+    private String name;
     @Column(name = "capacity")
     private int capacity;
     @Column(name = "volume")
@@ -24,22 +28,37 @@ public class Pool {
     @JoinColumn(name = "sector_id")
     private Sector sector;
 
+    @ManyToOne
+    @JoinColumn(name = "responsible_id")
+    private Personnal responsible;
+
     @ManyToMany
     @JoinTable(
             name = "pool_activity",
             joinColumns = @JoinColumn(name = "pool_id"),
             inverseJoinColumns = @JoinColumn(name = "activity_id"))
-    private Set<Activity> listOfActivities;
+    private Set<Activity> listOfActivities = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "pools_personnals",
+            joinColumns = @JoinColumn(name = "pool_id"),
+            inverseJoinColumns = @JoinColumn(name = "personnal_id"))
+    private Set<Personnal> listOfPersonals = new HashSet<>();
 
     public Pool() {
     }
 
-    public Pool(int capacity, double volume, State state, Sector sector) {
+    public Pool(String name, int capacity, double volume, State state, Sector sector, Personnal responsible) {
+        this.name = name;
         this.capacity = capacity;
         this.volume = volume;
         this.state = state;
         this.sector = sector;
+        this.responsible = responsible;
     }
+
+
 
     public Long getId() {
         return id;
@@ -47,6 +66,14 @@ public class Pool {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getCapacity() {
@@ -81,12 +108,28 @@ public class Pool {
         this.sector = sector;
     }
 
+    public Personnal getResponsible() {
+        return responsible;
+    }
+
+    public void setResponsible(Personnal responsible) {
+        this.responsible = responsible;
+    }
+
     public Set<Activity> getListOfActivities() {
         return listOfActivities;
     }
 
     public void setListOfActivities(Set<Activity> listOfActivities) {
         this.listOfActivities = listOfActivities;
+    }
+    
+    public Set<Personnal> getListOfPersonals() {
+        return listOfPersonals;
+    }
+
+    public void setListOfPersonals(Set<Personnal> listOfPersonnals) {
+        this.listOfPersonals = listOfPersonnals;
     }
 
     @Override

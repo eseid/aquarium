@@ -20,14 +20,19 @@ public class Activity {
     private Instant activityDate;
     @Column(name = "is_public")
     private boolean isPublic;
+    @Column(name = "description_actvity")
+    private String descriptionActvity;
+
+
 
     public Activity() {
     }
 
-    public Activity(String type, Instant activityDate, boolean isPublic) {
+    public Activity(String type, Instant activityDate, boolean isPublic, String descriptionActvity) {
         this.type = type;
         this.activityDate = activityDate;
         this.isPublic = isPublic;
+        this.descriptionActvity = descriptionActvity;
     }
 
     public Long getId() {
@@ -60,6 +65,14 @@ public class Activity {
 
     public void setPublic(boolean aPublic) {
         isPublic = aPublic;
+    }
+
+    public String getDescriptionActvity() {
+        return descriptionActvity;
+    }
+
+    public void setDescriptionActvity(String descriptionActvity) {
+        this.descriptionActvity = descriptionActvity;
     }
 
     @Override

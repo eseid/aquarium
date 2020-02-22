@@ -30,25 +30,22 @@ public class Personnal {
             name = "personnel_role",
             joinColumns = @JoinColumn(name = "personnel_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> listOfRoles;
+    private Set<Role> listOfRoles =  new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = false)
-    @JoinColumn(name = "personnel_id")
-    private Set<Pool> listOfPool;
 
     @ManyToMany
     @JoinTable(
             name = "personnel_activity",
             joinColumns = @JoinColumn(name = "personnel_id"),
             inverseJoinColumns = @JoinColumn(name = "activity_id"))
-    private Set<Activity> listOfActivity;
+    private Set<Activity> listOfActivity = new HashSet<>();
 
     @ManyToMany
     @JoinTable(
             name = "personnel_sector",
             joinColumns = @JoinColumn(name = "personnel_id"),
             inverseJoinColumns = @JoinColumn(name = "sector_id"))
-    private Set<Sector>  sectorsList;
+    private Set<Sector>  sectorsList = new HashSet<>();
 
     public Personnal() {
     }
@@ -116,14 +113,6 @@ public class Personnal {
 
     public void setListOfRoles(Set<Role> listOfRoles) {
         this.listOfRoles = listOfRoles;
-    }
-
-    public Set<Pool> getListOfPool() {
-        return listOfPool;
-    }
-
-    public void setListOfPool(Set<Pool> listOfPool) {
-        this.listOfPool = listOfPool;
     }
 
     public Set<Activity> getListOfActivity() {

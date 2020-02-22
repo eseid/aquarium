@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -28,11 +29,16 @@ public class PoolController {
         return new ResponseEntity<>(poolService.save(pool), HttpStatus.CREATED);
     }
 
+    @PutMapping
+    public ResponseEntity<Pool> update(@RequestBody  Pool pool) {
+        Pool savedPool = poolService.update(pool);
+        return new ResponseEntity<Pool>(savedPool, HttpStatus.OK);
+    }
+
     //@requestParam pour extraire les paramétre de la requéte
     @GetMapping
-    public ResponseEntity<Page<Pool>> findAll(@RequestParam(name = "page", defaultValue = "0") int page,
-                                              @RequestParam(name = "size", defaultValue = "10") int size) {
-        return new ResponseEntity<>(poolService.findAll(page, size), HttpStatus.OK);
+    public ResponseEntity<List<Pool>> findAll() {
+        return new ResponseEntity<>(poolService.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

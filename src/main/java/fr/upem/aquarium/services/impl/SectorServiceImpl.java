@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
@@ -37,12 +38,8 @@ public class SectorServiceImpl implements SectorService {
     }
 
     @Override
-    public Page<Sector> findAll(int page, int size) {
-        if(page < 0 || size < 0){
-            logger.severe("size of page or size have  negative value");
-            throw new ExistsException("error in value of page or size");
-        }
-        return sectorRepository.findAll(PageRequest.of(page, size));
+    public List<Sector> findAll() {
+        return sectorRepository.findAll();
     }
 
     @Override

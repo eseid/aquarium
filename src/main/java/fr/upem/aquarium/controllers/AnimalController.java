@@ -23,6 +23,12 @@ public class AnimalController {
         return new ResponseEntity<>(savedAnimal, HttpStatus.CREATED);
     }
 
+    @PutMapping
+    public ResponseEntity<Animal> update(@RequestBody Animal animal) {
+        Animal savedAnimal = animalService.save(animal);
+        return new ResponseEntity<>(savedAnimal, HttpStatus.OK);
+    }
+
     @GetMapping
     public ResponseEntity<List<Animal>> findAll(@RequestParam(name = "page", defaultValue = "0") int page,
                                                 @RequestParam(name = "size", defaultValue = "10") int size) {
@@ -38,6 +44,7 @@ public class AnimalController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") Long id){
+        System.out.println("$$$$$$$$$$$$$$$$$$$$ delete id $$$$$$$$$$$$$$$$$$$$");
         animalService.deleteById(id);
         return new ResponseEntity<Void>(HttpStatus.OK);
     }

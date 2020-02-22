@@ -23,8 +23,7 @@ public class AnimalServiceImpl implements AnimalService {
 
     @Override
     public Animal save(Animal animal) {
-        if(animalsRepository.existsByName(animal.getName()))
-            throw new ExistsException("L'Animal " + animal.getName()+ "existe déjà !");
+
         return animalsRepository.save(animal);
     }
 

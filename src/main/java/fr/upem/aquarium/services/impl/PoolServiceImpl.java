@@ -10,7 +10,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.logging.Logger;
 
 @Service
@@ -21,8 +23,6 @@ public class PoolServiceImpl implements PoolService {
 
     @Override
     public Pool save(Pool pool) {
-        if(sectorRepository.existsById(pool.getId()))
-            throw new ExistsException( "Pool with id " + pool.getId()+ " exist!");
         return sectorRepository.save(pool);
     }
 
@@ -37,12 +37,8 @@ public class PoolServiceImpl implements PoolService {
     }
 
     @Override
-    public Page<Pool> findAll(int page, int size) {
-        if(page < 0 || size < 0){
-            logger.severe("size of page or size have  negative value");
-            throw new ExistsException("error in value of page or size");
-        }
-        return sectorRepository.findAll(PageRequest.of(page, size));
+    public List<Pool> findAll() {
+        return sectorRepository.findAll();
     }
 
     @Override

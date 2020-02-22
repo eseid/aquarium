@@ -1,1 +1,103 @@
-<p>home works!</p>
+<app-main-nav></app-main-nav>
+<!--
+<video class="video-fluid z-depth-1" autoplay loop controls muted>
+  <source src="https://mdbootstrap.com/img/video/Sail-Away.mp4" type="video/mp4" />
+</video>
+-->
+
+
+<header>
+  <div class="overlay"></div>
+  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <source src="assets/video/aquarium.mp4" type="video/mp4">
+  </video>
+  <div class="container h-100">
+    <div class="d-flex h-100 text-center align-items-center">
+      <div class="w-100 text-white">
+        <h1 class="display-3">Aquarium Paris</h1>
+        <p class="lead mb-0">Plongez au coeur de l'océean</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<section class="my-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <p>The HTML5 video element uses an mp4 video as a source. Change the source video to add in your own background!
+          The header text is vertically centered using flex utilities that are build into Bootstrap 4.</p>
+        <p>The overlay color can be changed by changing the <code>background-color</code> of the <code>.overlay</code>
+          class in the CSS.</p>
+        <p>Set the mobile fallback image in the CSS by changing the background image of the header element within the
+          media query at the bottom of the CSS snippet.</p>
+        <p class="mb-0">
+          Created by <a href="https://startbootstrap.com">Start Bootstrap</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ngb-carousel *ngIf="images">
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img class="center" [src]="images[0]" alt="Random first slide">
+    </div>
+    <div class="carousel-caption">
+      <h3>First slide label</h3>
+      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img class="center" [src]="images[1]" alt="Random second slide">
+    </div>
+    <div class="carousel-caption">
+      <h3>Second slide label</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img class="center" [src]="images[2]" alt="Random third slide">
+    </div>
+    <div class="carousel-caption">
+      <h3>Third slide label</h3>
+      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+    </div>
+  </ng-template>
+</ngb-carousel>
+
+
+<div class="container2">
+  <div class="row">
+    <div class="col">
+      <p>sdfkgbksbkgdsndmkfngknbdfsjbln dldf,b qsbdq,sb,bcqs,bqcs,bqcsnbc knqskn</p>
+    </div>
+    <div class="col">
+      <div>
+        <img class="center" alt="logo" src="assets/img/dauphin.jpg"/>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="container2">
+  <div class="row">
+
+    <div class="col">
+      <div>
+        <img class="center" alt="logo" src="assets/img/dauphin.jpg"/>
+      </div>
+    </div>
+
+    <div class="col">
+      <p>sdfkgbksbkgdsndmkfngknbdfsjbln dldf,b qsbdq,sb,bcqs,bqcs,bqcsnbc knqskn</p>
+    </div>
+
+  </div>
+</div>

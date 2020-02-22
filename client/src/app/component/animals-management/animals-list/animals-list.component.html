@@ -1,11 +1,16 @@
 <div class="row">
   <h3>List des animaux</h3>
 </div>
+<br>
+<div class="row float-right">
+  <button class="btn btn-sm btn-success" (click)="openAnimalForm()">Ajouter</button>
+</div>
+<br><br>
 <div class="row">
   <table class="table">
     <thead>
     <tr>
-      <th scope="col" *ngFor="let label of columnLabels" class="text-uppercase">{{label}}</th>
+      <th *ngFor="let label of columnLabels" class="text-uppercase" scope="col">{{label}}</th>
     </tr>
     </thead>
     <tbody>
@@ -16,6 +21,10 @@
       <td>{{animal.destinctiveSign}}</td>
       <td>{{animal.checkinDate | date:'medium'}}</td>
       <td>{{animal.checkoutDate | date:'medium'}}</td>
+      <td>
+        <button class="btn btn-sm btn-primary" (click)="openAnimalForm(animal)">update</button>
+        <button class="btn btn-sm btn-danger" (click)="deleteAnimal(animal)">delete</button>
+      </td>
     </tr>
     </tbody>
   </table>

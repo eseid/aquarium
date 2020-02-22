@@ -3,6 +3,7 @@ package fr.upem.aquarium.services;
 import fr.upem.aquarium.entities.Activity;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ActivityService {
@@ -10,7 +11,7 @@ public interface ActivityService {
 
     public Activity update(Activity activity);
 
-    public Page<Activity> findAll(int page, int size);
+    public List<Activity> findAll();
 
     Optional<Activity> findById(Long id);
 

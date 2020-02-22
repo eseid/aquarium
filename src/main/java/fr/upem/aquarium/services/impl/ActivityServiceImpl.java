@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
@@ -22,8 +23,7 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public Activity save(Activity activity) {
-        if(activityRepository.existsById(activity.getId()))
-            throw new ExistsException( "Pool with id " + activity.getId()+ " exist!");
+
         return activityRepository.save(activity);
     }
 
@@ -38,12 +38,8 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public Page<Activity> findAll(int page, int size) {
-        if(page < 0 || size < 0){
-            logger.severe("size of page or size have  negative value");
-            throw new ExistsException("error in value of page or size");
-        }
-        return activityRepository.findAll(PageRequest.of(page, size));
+    public List<Activity> findAll() {
+        return activityRepository.findAll();
     }
 
     @Override
