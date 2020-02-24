@@ -1,19 +1,18 @@
 package fr.upem.aquarium.services;
 
 import fr.upem.aquarium.entities.Species;
-import org.springframework.data.domain.Page;
-import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.List;
 
 public interface SpeciesService {
+
     public Species save(Species species);
 
     public Species update(Species species);
 
-    public Page<Species> findAll(int page, int size);
+    public List<Species> findAll();
 
-    Optional<Species> findById(Long id);
+    Species findById(Long id);
 
     void deleteById(Long id);
 }

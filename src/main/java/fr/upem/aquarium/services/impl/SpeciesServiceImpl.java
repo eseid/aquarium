@@ -8,10 +8,13 @@ import fr.upem.aquarium.services.SpeciesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
+@Service
 public class SpeciesServiceImpl implements SpeciesService {
     private Logger logger = Logger.getLogger(SpeciesServiceImpl.class.getName());
     @Autowired
@@ -35,21 +38,18 @@ public class SpeciesServiceImpl implements SpeciesService {
     }
 
     @Override
-    public Page<Species> findAll(int page, int size) {
-        if(page < 0 || size < 0){
-            logger.severe("size of page or size have  negative value");
-            throw new ExistsException("error in value of page or size");
-        }
-        return speciesRepository.findAll(PageRequest.of(page, size));
+    public List<Species> findAll() {
+        return speciesRepository.findAll();
     }
 
     @Override
-    public Optional<Species> findById(Long id) {
-        if (!speciesRepository.existsById(id)) {
+    public Species findById(Long id) {
+        Optional<Species> speciesOptional = speciesRepository.findById(id);
+        if (!speciesOptional.isPresent()) {
             logger.severe("species with id " + id + " is not exist");
             throw new NotFoundException("species not found in database");
         }
-        return speciesRepository.findById(id);
+        return speciesOptional.get();
     }
 
     @Override
