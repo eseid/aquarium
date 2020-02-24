@@ -1,0 +1,82 @@
+<div class="row">
+  <div class="container">
+
+    <div class="modal-header">
+      <h4 class="modal-title">Détail du pool</h4>
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <br>
+
+    <i class="fas fa-user-tie">  {{pool.responsible.firstName}}  {{pool.responsible.lastName}}</i>
+    <br>
+    <br>
+    <i class="fas fa-location-arrow"> Secteur :  {{pool.sector.name}} - {{pool.sector.location}} </i>
+    <br>
+    <div class="row float-right">
+      <button class="btn btn-sm btn-success" (click)="addPersonnel()">Ajouter</button>
+    </div>
+    <br>
+    <h5>Liste des peronnels</h5>
+    <div class="row">
+      <table class="table">
+        <thead>
+        <tr>
+          <th *ngFor="let label of columnLabelsPersonal" class="text-uppercase" scope="col">{{label}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let personal of pool.listOfPersonals ">
+          <td scope="row">{{personal.id}}</td>
+          <td>{{personal.lastName}}</td>
+          <td>{{personal.firstName}}</td>
+          <td>{{personal.address}}</td>
+          <td>{{personal.birthDay | date:'medium'}}</td>
+          <td>
+            <button class="btn btn-sm btn-danger" (click)="deletePersonal(personal)">delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+
+    <br>
+    <div class="row float-right">
+      <button class="btn btn-sm btn-success" (click)="openAnimalForm()">Ajouter</button>
+    </div>
+    <br>
+    <h5>Liste des activités</h5>
+    <div class="row">
+      <table class="table">
+        <thead>
+        <tr>
+          <th *ngFor="let label of columnLabelsActivities" class="text-uppercase" scope="col">{{label}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let activity of pool.listOfActivities">
+          <td scope="row">{{activity.id}}</td>
+          <td>{{activity.type}}</td>
+          <td>{{activity.activityDate}}</td>
+          <td>{{activity.isPublic}}</td>
+          <td>{{activity.descriptionActivity | date:'medium'}}</td>
+          <td>
+            <button class="btn btn-sm btn-danger" (click)="deleteActivity(activity)">delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="save()">Sauvegarder</button>
+      <button type="button" class="btn btn-outline-default" (click)="activeModal.close('Close click')">Annuler</button>
+    </div>
+
+  </div>
+</div>
+

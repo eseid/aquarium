@@ -10,19 +10,19 @@ const routes: Routes = [
   },
   {
     path: 'animals-management',
-    loadChildren: () => import('./component/animals-management/animals-management.module').then(mod => mod.AnimalsManagementModule)
+    loadChildren: () => import('./component/administration/animals-management/animals-management.module').then(mod => mod.AnimalsManagementModule)
   },
   {
     path: 'activity-management',
-    loadChildren: () => import('./component/activity-management/activity-management.module').then(mod => mod.ActivityManagementModule)
+    loadChildren: () => import('./component/aquarium-management/activity-management/activity-management.module').then(mod => mod.ActivityManagementModule)
   },
   {
     path: 'sectors-management',
-    loadChildren: () => import('./component/sectors-management/sectors-management.module').then(mod => mod.SectorsManagementModule)
+    loadChildren: () => import('./component/administration/sectors-management/sectors-management.module').then(mod => mod.SectorsManagementModule)
   },
   {
     path: 'pools-management',
-    loadChildren: () => import('./component/pools-management/pools-management.module').then(mod => mod.PoolsManagementModule)
+    loadChildren: () => import('./component/administration/pools-management/pools-management.module').then(mod => mod.PoolsManagementModule)
   },
   {
     path: '',

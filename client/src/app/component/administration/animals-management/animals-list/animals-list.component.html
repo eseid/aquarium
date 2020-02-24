@@ -1,0 +1,42 @@
+<div class="row">
+    <h3>List des animaux</h3>
+</div>
+<br>
+<div class="row float-right">
+  <button class="btn btn-sm btn-success" (click)="openAnimalForm()">
+    <i class="fa fa-plus"></i>
+    Ajouter
+  </button>
+</div>
+<br><br>
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col" *ngFor="let label of columnLabels" class="text-uppercase">{{label}}</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let animal of listOfAnimals">
+                <td scope="row">{{animal.id}}</td>
+                <td>{{animal.name}}</td>
+                <td>{{animal.sexe}}</td>
+                <td>{{animal.destinctiveSign}}</td>
+                <td>{{animal.checkinDate | date:'medium'}}</td>
+                <td>{{animal.checkoutDate | date:'medium'}}</td>
+                <td>
+                  <span class="action-icon text-info" (click)="navigateToDetails(animal)" title="Détails">
+                    <i class="fa fa-eye"></i>
+                  </span>
+                  <span class="action-icon text-primary" (click)="openAnimalForm(animal)" title="Mettre à jour">
+                    <i class="fa fa-edit"></i>
+                  </span>
+                  <span class="action-icon text-danger" (click)="deleteAnimal(animal)" title="Supprimer">
+                    <i class="fa fa-trash-alt"></i>
+                  </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

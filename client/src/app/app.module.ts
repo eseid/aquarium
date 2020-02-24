@@ -5,10 +5,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './component/layout/home/home.component';
-import { AnimalsManagementModule } from './component/animals-management/animals-management.module';
-import { AnimalsManagementRoutingModule } from './component/animals-management/animals-management-routing.module';
-import { ActivityManagementModule } from './component/activity-management/activity-management.module';
-import { ActivityManagementRoutingModule } from './component/activity-management/activity-management-routing.module';
+import { AnimalsManagementModule } from './component/administration/animals-management/animals-management.module';
+import { AnimalsManagementRoutingModule } from './component/administration/animals-management/animals-management-routing.module';
+import { ActivityManagementModule } from './component/aquarium-management/activity-management/activity-management.module';
+import { ActivityManagementRoutingModule } from './component/aquarium-management/activity-management/activity-management-routing.module';
 
 
 
@@ -24,15 +24,15 @@ import { MatListModule } from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
-import { SectorsListComponent } from './component/sectors-management/sectors-list/sectors-list.component';
-import { SectorsManagementModule } from './component/sectors-management/sectors-management.module';
-import { SectorsManagementRoutingModule } from './component/sectors-management/sectors-management-routing.module';
+import { SectorsListComponent } from './component/administration/sectors-management/sectors-list/sectors-list.component';
+import { SectorsManagementModule } from './component/administration/sectors-management/sectors-management.module';
+import { SectorsManagementRoutingModule } from './component/administration/sectors-management/sectors-management-routing.module';
 import {SharedModule} from './shared.module';
 import { NgwWowModule } from 'ngx-wow';
-import { PoolsManagementRoutingModule } from './component/pools-management/pools-management-routing.module';
-import {PoolsListComponent} from './component/pools-management/pools-list/pools-list.component';
-import {PoolsManagementModule} from './component/pools-management/pools-management.module';
+import { PoolsManagementRoutingModule } from './component/administration/pools-management/pools-management-routing.module';
+import {PoolsManagementModule} from './component/administration/pools-management/pools-management.module';
 import {MatTableModule} from "@angular/material/table";
+import {ToastrModule} from 'ngx-toastr';
 
 
 
@@ -67,7 +67,9 @@ import {MatTableModule} from "@angular/material/table";
         NgwWowModule,
         PoolsManagementRoutingModule,
         PoolsManagementModule,
-        MatTableModule
+        MatTableModule,
+      ToastrModule.forRoot()
+
 
     ],
   providers: [NgbModal],

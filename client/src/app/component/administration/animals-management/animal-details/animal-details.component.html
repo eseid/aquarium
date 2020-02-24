@@ -1,0 +1,147 @@
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <h3>Informations sur l'animal</h3>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-lg-4">
+        <h5>Nom : </h5>
+      </div>
+      <div class="col-lg-8">
+        <p>{{animal.name}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <h5>Sexe : </h5>
+      </div>
+      <div class="col-lg-8">
+        <p>{{animal.sexe === 'F' ? 'Femelle' : 'Male'}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <h5>Signe distinctif : </h5>
+      </div>
+      <div class="col-lg-8">
+        <p>{{animal.destinctiveSign}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <h5>Date d'entrée : </h5>
+      </div>
+      <div class="col-lg-8">
+        <p>{{animal.checkinDate ? (animal.checkinDate | date:'medium') : 'Date non rensignée !'}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <h5>Date de sortie : </h5>
+      </div>
+      <div class="col-lg-8">
+        <p>{{animal.checkinDate ? (animal.checkoutDate | date:'medium') : 'Date non rensignée !'}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <h5>Bassin : </h5>
+      </div>
+      <div class="col-lg-8">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-lg-4">
+                Capacité :
+              </div>
+              <div class="col-lg-8">
+                {{animal.pool?.capacity}}
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-lg-4">
+                Volume :
+              </div>
+              <div class="col-lg-8">
+                {{animal.pool?.volume}} m³
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-lg-4">
+                Etat :
+              </div>
+              <div class="col-lg-8">
+                {{animal.pool?.state}}
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-lg-4">
+                Secteur :
+              </div>
+              <div class="col-lg-8">
+                {{animal.pool?.sector?.name}}
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <p></p>
+    <div class="row">
+      <div class="col-lg-4">
+        <h5>Espèce : </h5>
+      </div>
+      <div class="col-lg-8">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-lg-4">
+                Durée de vie :
+              </div>
+              <div class="col-lg-8">
+                {{animal.species?.lifeExpectancy}} ans
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-lg-4">
+                Régime :
+              </div>
+              <div class="col-lg-8">
+                {{animal.species?.diet}}
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-lg-4">
+                Espèce Manacé ?
+              </div>
+              <div class="col-lg-8">
+                {{animal.species?.isThreat ? 'Oui' : 'Non'}}
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-lg-4">
+                Niveau de menace :
+              </div>
+              <div class="col-lg-8">
+                {{animal.species?.threatLevel}} / 10
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

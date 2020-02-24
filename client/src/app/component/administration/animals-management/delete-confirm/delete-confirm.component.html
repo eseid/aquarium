@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <h4 class="modal-title">Suppression d'un animal</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p>Souhaitez-vous supprimer l'animal <i>{{animal.name}}</i> de la liste ?</p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-danger" (click)="delete()"><i class="fa fa-trash-alt"></i> Supprimer</button>
+  <button type="button" class="btn btn-outline-default" (click)="activeModal.close('Close click')">Annuler</button>
+</div>

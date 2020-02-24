@@ -13,6 +13,7 @@ import {MainNavComponent} from './component/layout/main-nav/main-nav.component';
   imports: [
     CommonModule,
     MDBBootstrapModule.forRoot(),
+
   ],
   exports: [
     FormsModule,
