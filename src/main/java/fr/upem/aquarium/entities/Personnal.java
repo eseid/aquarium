@@ -1,6 +1,7 @@
 package fr.upem.aquarium.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.*;
 
@@ -9,7 +10,7 @@ import java.util.*;
  */
 @Entity
 @Table(name = "personnels")
-public class Personnal {
+public class Personnal implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

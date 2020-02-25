@@ -59,7 +59,6 @@ public class Pool {
     }
 
 
-
     public Long getId() {
         return id;
     }

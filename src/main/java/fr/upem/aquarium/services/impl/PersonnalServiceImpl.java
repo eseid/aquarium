@@ -31,11 +31,6 @@ public class PersonnalServiceImpl implements PersonnalService {
 
     @Override
     public Personnal update(Personnal personnal) {
-        if(personnalRepository.existsById(personnal.getId())) {
-            logger.info("update success of personnal with id " + personnal.getId());
-            return personnalRepository.save(personnal);
-        }
-        logger.info("personnal with id " + personnal.getId() + " is not exist, a new personnal is created ");
         return personnalRepository.save(personnal);
     }
 

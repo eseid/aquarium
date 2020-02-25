@@ -28,6 +28,7 @@ public class PoolServiceImpl implements PoolService {
 
     @Override
     public Pool update(Pool pool) {
+        System.out.println("*****************************");
         return sectorRepository.save(pool);
     }
 

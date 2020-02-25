@@ -26,6 +26,10 @@ export class PoolUpdateComponent implements OnInit {
   listOfActivities: Activity[];
   activePersonal: boolean;
   activeActivities: boolean;
+  activeResponsible: boolean;
+  personalToAdd: Personal;
+  activityToAdd: Activity;
+  responsible: Personal;
 
   constructor(
     private activateRoute: ActivatedRoute,
@@ -40,6 +44,7 @@ export class PoolUpdateComponent implements OnInit {
   ) {
     this.activePersonal = false;
     this.activeActivities = false;
+    this.activeResponsible = false;
   }
 
   ngOnInit() {
@@ -54,6 +59,19 @@ export class PoolUpdateComponent implements OnInit {
 
   activeSelectActivity(){
     this.activeActivities = true;
+  }
+
+  activeSelectResponsible(){
+    this.activeResponsible = true;
+  }
+
+  addPersonal(){
+    console.log(this.pool.listOfPersonals.length);
+    this.pool.listOfPersonals.push(this.personalToAdd);
+  }
+
+  addActivity(){
+    this.pool.listOfActivities.push(this.activityToAdd);
   }
 
   getListOfPersonnals() {

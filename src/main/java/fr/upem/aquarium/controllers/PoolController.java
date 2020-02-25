@@ -31,6 +31,7 @@ public class PoolController {
 
     @PutMapping
     public ResponseEntity<Pool> update(@RequestBody  Pool pool) {
+        System.out.println("*****************************");
         Pool savedPool = poolService.update(pool);
         return new ResponseEntity<Pool>(savedPool, HttpStatus.OK);
     }
