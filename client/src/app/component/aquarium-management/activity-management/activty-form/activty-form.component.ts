@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Activity} from "../../../../entities/activity.entitie";
-import {ActivityService} from "../../../../services/activity.service";
-import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+import {Activity} from '../../../../entities/activity.entitie';
+import {ActivityService} from '../../../../services/activity.service';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-activty-form',
@@ -9,6 +9,7 @@ import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
   styleUrls: ['./activty-form.component.css']
 })
 export class ActivtyFormComponent implements OnInit {
+
   @Input() activity: Activity;
 
   constructor(
@@ -18,11 +19,7 @@ export class ActivtyFormComponent implements OnInit {
 ) { }
 
   ngOnInit() {
-
-    console.log(this.activity);
   }
-
-
 
   save() {
     if (this.activity.id) {

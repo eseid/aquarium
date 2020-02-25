@@ -6,7 +6,7 @@ import {ActivitiesVisitComponent} from './activities-visit/activities-visit.comp
 
 const routes: Routes = [
   {
-    path: 'activity-list',
+    path: 'activities-list',
     component: ActivitiesListComponent
   },
   {

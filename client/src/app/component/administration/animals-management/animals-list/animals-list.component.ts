@@ -25,12 +25,12 @@ export class AnimalsListComponent implements OnInit {
     private router: Router
   ) {
     this.listOfAnimals = [];
-    this.columnLabels = ['#', 'name', 'sexe', 'destinctive Sign', 'checkin Date', 'checkout Date'];
+    this.columnLabels = ['#', 'name', 'sexe', 'signe destictif', 'date d\'entrée', 'date de sortie'];
   }
 
   ngOnInit() {
     this.findAllAnimals();
-    this.subscribeRefreshProductList();
+    this.subscribeRefreshListEvent();
   }
 
   findAllAnimals() {
@@ -58,7 +58,7 @@ export class AnimalsListComponent implements OnInit {
     modalRef.componentInstance.animal = animal;
   }
 
-  subscribeRefreshProductList() {
+  subscribeRefreshListEvent() {
     this.eventManager.subscribe('refresh-animals-list', event => {
       if (event) {
         const animal: Animal = JSON.parse(JSON.stringify(event.content.data));

@@ -97,7 +97,7 @@ public class AquariumApplication implements CommandLineRunner {
         pool3 = poolRepository.save(pool3);
 
 
-        Species species = speciesRepository.save(new Species(3,"test", false, 5));
+        Species species = speciesRepository.save(new Species("espèce 1", 3,"test", false, 5));
 
 
         // Species species = speciesRepository.save(new Species(12, "diet", true, 3));

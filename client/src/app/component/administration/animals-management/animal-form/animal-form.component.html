@@ -48,7 +48,7 @@
       <label for="pool" class="col-sm-2 col-form-label">Bassin</label>
       <div class="col-sm-10">
         <select class="form-control" id="pool" [(ngModel)]="animal.pool" name="pool">
-          <option [ngValue]="pool" *ngFor="let pool of listOfPool">{{pool.capacity}} / {{pool.volume}} m3</option>
+          <option [ngValue]="pool" *ngFor="let pool of listOfPool">{{pool.name}}</option>
         </select>
       </div>
     </div>
@@ -57,7 +57,7 @@
       <label for="species" class="col-sm-2 col-form-label">Espèce</label>
       <div class="col-sm-10">
         <select class="form-control" id="species" [(ngModel)]="animal.species" name="species">
-          <option [ngValue]="species" *ngFor="let species of listOfSpecies">{{species.id}}</option>
+          <option [ngValue]="species" *ngFor="let species of listOfSpecies">{{species.name}}</option>
         </select>
       </div>
     </div>

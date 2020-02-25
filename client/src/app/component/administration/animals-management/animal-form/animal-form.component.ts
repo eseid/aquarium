@@ -30,7 +30,6 @@ export class AnimalFormComponent implements OnInit {
   ngOnInit() {
     this.getListOfPools();
     this.getListOfSpecies();
-    console.log(this.animal);
   }
 
   getListOfPools() {
@@ -42,7 +41,10 @@ export class AnimalFormComponent implements OnInit {
 
   getListOfSpecies() {
     this.specieisService.findAll().subscribe(
-      response => this.listOfSpecies = response.body,
+      response => {
+        this.listOfSpecies = response.body;
+        console.log(this.listOfSpecies);
+      },
       error => console.log(error)
     );
   }

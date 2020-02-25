@@ -1,10 +1,7 @@
  /* You can add global styles to this file, and also import other style files */
-@import "~animate.css/animate.css";
-
-html, body { margin: 0; width: 100%; height: 100%; background-color: royalblue}
+html, body { margin: 0; width: 100%; height: 100%;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-/*
- rm -rf node_modules
-rm -rf package-lock.json
- sudo npm cache clean --force
- */
+ .action-icon{
+   cursor: pointer;
+   margin: 10px;
+ }

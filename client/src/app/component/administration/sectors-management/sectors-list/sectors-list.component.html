@@ -1,0 +1,39 @@
+<div class="row">
+  <h3>List des Secteurs</h3>
+</div>
+<br>
+<div class="row float-right">
+  <button class="btn btn-sm btn-success" (click)="openSectorForm()">
+    <i class="fa fa-plus"></i>
+    Ajouter
+  </button>
+</div>
+<br><br>
+<div class="row">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col" *ngFor="let label of columnLabels" class="text-uppercase">{{label}}</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let sector of listOfSectors">
+      <td scope="row">{{sector.id}}</td>
+      <td>{{sector.name}}</td>
+      <td>{{sector.location}}</td>
+      <td>
+                  <span class="action-icon text-info" (click)="navigateToDetails(sector)" title="Détails">
+                    <i class="fa fa-eye"></i>
+                  </span>
+        <span class="action-icon text-primary" (click)="openSectorForm(sector)" title="Mettre à jour">
+                    <i class="fa fa-edit"></i>
+                  </span>
+        <span class="action-icon text-danger" (click)="openDeleteConfirm(sector)" title="Supprimer">
+                    <i class="fa fa-trash-alt"></i>
+                  </span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

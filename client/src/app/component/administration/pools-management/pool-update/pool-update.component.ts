@@ -3,7 +3,6 @@ import {Pool} from '../../../../entities/pool.entitie';
 import {ActivatedRoute} from '@angular/router';
 import {PoolService} from '../../../../services/pool.service';
 import {Personal} from '../../../../entities/personal.entitie';
-import {ToastrService} from 'ngx-toastr';
 import {Activity} from '../../../../entities/activity.entitie';
 import {SectorService} from '../../../../services/sector.service';
 import {Sector} from '../../../../entities/sector.entitie';
@@ -36,7 +35,6 @@ export class PoolUpdateComponent implements OnInit {
     private personalService: PersonalService,
     private activityService: ActivityService,
     public activeModal: NgbActiveModal,
-    private  toastr: ToastrService
 
 
   ) {
@@ -74,7 +72,6 @@ export class PoolUpdateComponent implements OnInit {
 
   deletePersonal(personal: Personal){
     if (personal.id === this.pool.responsible.id) {
-      this.toastr.error('Vous ne pouvez pas supprimer ce personnel.');
     } else {
       const index: number = this.pool.listOfPersonals.indexOf(personal);
       if (index !== -1) {

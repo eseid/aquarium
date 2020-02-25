@@ -22,18 +22,16 @@ public class SpeciesServiceImpl implements SpeciesService {
 
     @Override
     public Species save(Species species) {
-        if(speciesRepository.existsById(species.getId()))
-            throw new ExistsException( "Species with id " + species.getId()+ " exist!");
+        if(speciesRepository.existsByName(species.getName()))
+            throw new ExistsException( "L'espèce " + species.getName()+ " existe déjà !");
         return speciesRepository.save(species);
     }
 
     @Override
     public Species update(Species species) {
-        if(speciesRepository.existsById(species.getId())) {
-            logger.info("update success of species with id " + species.getId());
-            return speciesRepository.save(species);
+        if(!speciesRepository.existsById(species.getId())) {
+           throw new NotFoundException("L'espèce avec l'id "+ species.getId() + " est introuvable !");
         }
-        logger.info("species with id " + species.getId() + " is not exist, a new species is created ");
         return speciesRepository.save(species);
     }
 
