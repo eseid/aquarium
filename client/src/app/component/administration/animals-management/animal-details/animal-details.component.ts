@@ -7,7 +7,7 @@ import {Animal} from '../../../../entities/animal.entitie';
 @Component({
   selector: 'app-animal-details',
   templateUrl: './animal-details.component.html',
-  styleUrls: ['./animal-details.component.scss']
+  styleUrls: ['./animal-details.component.css']
 })
 export class AnimalDetailsComponent implements OnInit {
 

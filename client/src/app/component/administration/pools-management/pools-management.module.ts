@@ -6,14 +6,14 @@ import {PoolsManagementRoutingModule} from "./pools-management-routing.module";
 import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
-import { PoolsFormComponent } from './pools-form/pools-form.component';
-import {AnimalFormComponent} from "../animals-management/animal-form/animal-form.component";
 import { PoolDetailComponent } from './pool-detail/pool-detail.component';
+import {DeleteConfirmComponent} from './delete-confirm/delete-confirm.component';
+import { PoolUpdateComponent } from './pool-update/pool-update.component';
 
 
 
 @NgModule({
-  declarations: [PoolsListComponent, PoolsFormComponent, PoolDetailComponent],
+  declarations: [PoolsListComponent, DeleteConfirmComponent, PoolDetailComponent, PoolUpdateComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -22,6 +22,6 @@ import { PoolDetailComponent } from './pool-detail/pool-detail.component';
     MatButtonModule,
     MatIconModule
   ],
-  entryComponents: [PoolsFormComponent, PoolDetailComponent]
+  entryComponents: [PoolDetailComponent, DeleteConfirmComponent, PoolUpdateComponent]
 })
 export class PoolsManagementModule { }

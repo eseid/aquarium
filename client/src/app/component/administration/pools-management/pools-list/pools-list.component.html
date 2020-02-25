@@ -1,117 +1,41 @@
-<!--
 <div class="row">
   <h3>List des animaux</h3>
 </div>
 <br>
 <div class="row float-right">
-  <button class="btn btn-sm btn-success" (click)="openPoolForm()">Ajouter</button>
+  <button class="btn btn-sm btn-success" (click)="openAnimalForm()">
+    <i class="fa fa-plus"></i>
+    Ajouter
+  </button>
 </div>
 <br><br>
 <div class="row">
   <table class="table">
     <thead>
     <tr>
-      <th *ngFor="let label of columnLabels" class="text-uppercase" scope="col">{{label}}</th>
+      <th scope="col" *ngFor="let label of columnLabels" class="text-uppercase">{{label}}</th>
+      <th scope="col">Action</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let pool of pools">
+    <tr *ngFor="let pool of listOfPools">
       <td scope="row">{{pool.id}}</td>
+      <td>{{pool.name}}</td>
       <td>{{pool.capacity}}</td>
       <td>{{pool.state}}</td>
-      <td>{{pool.sector.name}}</td>
       <td>{{pool.volume}}</td>
       <td>
-        <button class="btn btn-sm btn-primary" (click)="openPoolForm(pool)">update</button>
-        <button class="btn btn-sm btn-danger" (click)="deletePool(pool)">delete</button>
+                  <span class="action-icon text-info" (click)="navigateToDetails(pool)" title="Détails">
+                    <i class="fa fa-eye"></i>
+                  </span>
+        <span class="action-icon text-primary" (click)="openPoolForm(pool)" title="Mettre à jour">
+                    <i class="fa fa-edit"></i>
+                  </span>
+        <span class="action-icon text-danger" (click)="deletePool(pool)" title="Supprimer">
+                    <i class="fa fa-trash-alt"></i>
+                  </span>
       </td>
     </tr>
     </tbody>
   </table>
 </div>
--->
-
-<table [dataSource]="dataSource"
-       class="mat-elevation-z8" mat-table
-       multiTemplateDataRows>
-  <ng-container *ngFor="let column of columnsToDisplay" matColumnDef="{{column}}">
-    <th *matHeaderCellDef mat-header-cell> {{column}} </th>
-    <td *matCellDef="let element" mat-cell> {{element[column]}} </td>
-
-
-  </ng-container>
-
-  <ng-container matColumnDef="expandedDetail">
-    <td *matCellDef="let element" [attr.colspan]="columnsToDisplay.length" mat-cell>
-
-      <div [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'"
-           class="example-element-detail">
-
-
-        <div class="example-element-description">
-
-          <span class="example-element-description-attribution">
-            <tr>
-              <td>Responsable :</td>
-            </tr>
-             <tr>
-                  <td scope="row">{{''}}</td>
-                 <td>{{element.responsible.id}}</td>
-                <td>{{element.responsible.firstName}}</td>
-                <td>{{element.responsible.lastName}}</td>
-            </tr>
-              <tr>
-              <td>Secteur :</td>
-            </tr>
-             <tr>
-                  <td scope="row">{{''}}</td>
-                 <td>{{element.sector.id}}</td>
-                <td>{{element.sector.name}}</td>
-                <td>{{element.sector.location}}</td>
-            </tr>
-            <tr>
-              <td>Liste des activités :</td>
-            </tr>
-            <tr *ngFor="let activity of element.listOfActivities">
-                  <td scope="row">{{''}}</td>
-                 <td>{{activity.id}}</td>
-                <td>{{activity.type}}</td>
-                <td>{{activity.activityDate}}</td>
-               <td>{{activity.isPublic}}</td>
-               <td>{{activity.descriptionActivity}}</td>
-            </tr>
-
-             <tr>
-              <td>Liste des personnels :</td>
-             </tr>
-             <tr *ngFor="let personnal of element.listOfPersonals">
-                <td scope="row">{{personnal.id}}</td>
-                <td>{{personnal.firstName}}</td>
-               <td>{{personnal.lastName}}</td>
-             </tr>
-
-          </span>
-        </div>
-
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="openPoolForm(element)">Modifier</button>
-        <button type="button" class="btn btn-danger" (click)="activeModal.close('Close click')">supprimer</button>
-        <button type="button" class="btn btn-light" (click)="openPoolDetail(element)">détail</button>
-
-      </div>
-    </td>
-  </ng-container>
-
-
-
-  <tr *matHeaderRowDef="columnsToDisplay" mat-header-row></tr>
-  <tr (click)="expandedElement = expandedElement === element ? null : element"
-      *matRowDef="let element; columns: columnsToDisplay;"
-      [class.example-expanded-row]="expandedElement === element"
-      class="example-element-row"
-      mat-row>
-  </tr>
-  <tr *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row" mat-row></tr>
-</table>

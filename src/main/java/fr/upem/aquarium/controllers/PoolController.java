@@ -48,6 +48,7 @@ public class PoolController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") Long id){
+        poolService.deleteById(id);
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 

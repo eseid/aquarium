@@ -24,9 +24,6 @@ import { MatListModule } from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
-import { SectorsListComponent } from './component/administration/sectors-management/sectors-list/sectors-list.component';
-import { SectorsManagementModule } from './component/administration/sectors-management/sectors-management.module';
-import { SectorsManagementRoutingModule } from './component/administration/sectors-management/sectors-management-routing.module';
 import {SharedModule} from './shared.module';
 import { NgwWowModule } from 'ngx-wow';
 import { PoolsManagementRoutingModule } from './component/administration/pools-management/pools-management-routing.module';
@@ -40,7 +37,6 @@ import {ToastrModule} from 'ngx-toastr';
   declarations: [
     AppComponent,
     HomeComponent,
-    SectorsListComponent,
   ],
     imports: [
         BrowserModule,
@@ -61,8 +57,6 @@ import {ToastrModule} from 'ngx-toastr';
         MatSelectModule,
         ActivityManagementModule,
         ActivityManagementRoutingModule,
-        SectorsManagementModule,
-        SectorsManagementRoutingModule,
         SharedModule,
         NgwWowModule,
         PoolsManagementRoutingModule,

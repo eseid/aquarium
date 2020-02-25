@@ -17,10 +17,6 @@ const routes: Routes = [
     loadChildren: () => import('./component/aquarium-management/activity-management/activity-management.module').then(mod => mod.ActivityManagementModule)
   },
   {
-    path: 'sectors-management',
-    loadChildren: () => import('./component/administration/sectors-management/sectors-management.module').then(mod => mod.SectorsManagementModule)
-  },
-  {
     path: 'pools-management',
     loadChildren: () => import('./component/administration/pools-management/pools-management.module').then(mod => mod.PoolsManagementModule)
   },

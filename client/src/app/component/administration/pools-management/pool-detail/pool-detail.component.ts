@@ -9,6 +9,9 @@ import {ActivityService} from '../../../../services/activity.service';
 import {PersonalService} from '../../../../services/personal.service';
 import {SectorService} from '../../../../services/sector.service';
 import { ToastrService } from 'ngx-toastr';
+import {Animal} from '../../../../entities/animal.entitie';
+import {ActivatedRoute} from '@angular/router';
+import {AnimalService} from '../../../../services/animal.service';
 
 
 @Component({
@@ -17,6 +20,37 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./pool-detail.component.css']
 })
 export class PoolDetailComponent implements OnInit {
+
+
+  pool: Pool;
+
+  constructor(
+    private activateRoute: ActivatedRoute,
+    private poolService: PoolService
+  ) {
+    this.pool = new Pool();
+  }
+
+  ngOnInit() {
+    this.getAnimalDetailsFromRoute();
+  }
+
+  getAnimalDetailsFromRoute() {
+    this.activateRoute.params.subscribe(param => {
+      this.getPoolById(param['id']);
+    });
+  }
+
+  getPoolById(id: number) {
+    this.poolService.findById(id).subscribe(response => this.pool = response.body, error => console.log(error));
+  }
+
+
+
+
+
+
+  /*
   @Input() pool: Pool;
 
   listOfActivities: Activity[];
@@ -103,6 +137,8 @@ export class PoolDetailComponent implements OnInit {
       });
     }
   }
+  */
+
 
 
 }

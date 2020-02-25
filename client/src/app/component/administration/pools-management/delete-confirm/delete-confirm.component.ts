@@ -3,6 +3,8 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {Animal} from '../../../../entities/animal.entitie';
 import {AnimalService} from '../../../../services/animal.service';
 import {EventManagerService} from '../../../../services/event-manager.service';
+import {Pool} from '../../../../entities/pool.entitie';
+import {PoolService} from '../../../../services/pool.service';
 
 @Component({
   selector: 'app-delete-confirm',
@@ -11,21 +13,21 @@ import {EventManagerService} from '../../../../services/event-manager.service';
 })
 export class DeleteConfirmComponent implements OnInit {
 
-  @Input() animal: Animal;
+  @Input() pool: Pool;
 
   constructor(
     public activeModal: NgbActiveModal,
-    private animalService: AnimalService,
+    private poolService: PoolService,
     private eventManager: EventManagerService
   ) { }
 
   ngOnInit() {
-    console.log(this.animal);
+    console.log(this.pool);
   }
 
   delete() {
-    this.animalService.deleteById(this.animal.id).subscribe(response => {
-      this.broadcastRefreshProductList(this.animal, 'delete');
+    this.poolService.deleteById(this.pool.id).subscribe(response => {
+      this.broadcastRefreshProductList(this.pool, 'delete');
       this.activeModal.close();
     }, error => console.log(error));
   }
@@ -35,7 +37,7 @@ export class DeleteConfirmComponent implements OnInit {
       'action': action,
       'data': data
     };
-    this.eventManager.broadcast({ name: 'refresh-animals-list', content: content});
+    this.eventManager.broadcast({ name: 'refresh-pools-list', content: content});
   }
 
 }

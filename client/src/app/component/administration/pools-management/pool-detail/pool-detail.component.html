@@ -1,82 +1,117 @@
-<div class="row">
-  <div class="container">
-
-    <div class="modal-header">
-      <h4 class="modal-title">Détail du pool</h4>
-      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-
-    <br>
-
-    <i class="fas fa-user-tie">  {{pool.responsible.firstName}}  {{pool.responsible.lastName}}</i>
-    <br>
-    <br>
-    <i class="fas fa-location-arrow"> Secteur :  {{pool.sector.name}} - {{pool.sector.location}} </i>
-    <br>
-    <div class="row float-right">
-      <button class="btn btn-sm btn-success" (click)="addPersonnel()">Ajouter</button>
-    </div>
-    <br>
-    <h5>Liste des peronnels</h5>
+<div class="card">
+  <div class="card-body">
     <div class="row">
-      <table class="table">
-        <thead>
-        <tr>
-          <th *ngFor="let label of columnLabelsPersonal" class="text-uppercase" scope="col">{{label}}</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let personal of pool.listOfPersonals ">
-          <td scope="row">{{personal.id}}</td>
-          <td>{{personal.lastName}}</td>
-          <td>{{personal.firstName}}</td>
-          <td>{{personal.address}}</td>
-          <td>{{personal.birthDay | date:'medium'}}</td>
-          <td>
-            <button class="btn btn-sm btn-danger" (click)="deletePersonal(personal)">delete</button>
-          </td>
-        </tr>
-        </tbody>
-      </table>
+      <h3>Informations sur le pool</h3>
     </div>
-
-
-
-    <br>
-    <div class="row float-right">
-      <button class="btn btn-sm btn-success" (click)="openAnimalForm()">Ajouter</button>
-    </div>
-    <br>
-    <h5>Liste des activités</h5>
+    <hr>
     <div class="row">
-      <table class="table">
-        <thead>
-        <tr>
-          <th *ngFor="let label of columnLabelsActivities" class="text-uppercase" scope="col">{{label}}</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let activity of pool.listOfActivities">
-          <td scope="row">{{activity.id}}</td>
-          <td>{{activity.type}}</td>
-          <td>{{activity.activityDate}}</td>
-          <td>{{activity.isPublic}}</td>
-          <td>{{activity.descriptionActivity | date:'medium'}}</td>
-          <td>
-            <button class="btn btn-sm btn-danger" (click)="deleteActivity(activity)">delete</button>
-          </td>
-        </tr>
-        </tbody>
-      </table>
+      <div class="col-lg-4">
+        <h5>Nom : </h5>
+      </div>
+      <div class="col-lg-8">
+        <p>{{pool.name}}</p>
+      </div>
     </div>
 
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="save()">Sauvegarder</button>
-      <button type="button" class="btn btn-outline-default" (click)="activeModal.close('Close click')">Annuler</button>
+    <div class="row">
+      <div class="col-lg-4">
+        <h5>Capacité : </h5>
+      </div>
+      <div class="col-lg-8">
+        <p>{{pool.capacity}}</p>
+      </div>
     </div>
 
+    <div class="row">
+      <div class="col-lg-4">
+        <h5>Volume : </h5>
+      </div>
+      <div class="col-lg-8">
+        <p>{{pool.volume}}</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <h5>Volume : </h5>
+      </div>
+      <div class="col-lg-8">
+        <p>{{pool.responsible?.lastName}} {{pool.responsible?.firstName}}</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <h5>Responsable : </h5>
+      </div>
+      <div class="col-lg-8">
+        <p>{{pool.volume}}</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <h5>Secteur : </h5>
+      </div>
+      <div class="col-lg-8">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-lg-4">
+                Nom :
+              </div>
+              <div class="col-lg-8">
+                {{pool.sector?.name}}
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-lg-4">
+                Localisation :
+              </div>
+              <div class="col-lg-8">
+                {{pool.sector?.location}}
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <p></p>
+    <div class="row">
+      <div class="col-lg-4">
+        <h5>Liste des personnels : </h5>
+      </div>
+      <div class="col-lg-8">
+        <ul class="list-group" >
+          <li class="list-group-item" *ngFor="let personal of pool.listOfPersonals">
+            <div class="row">
+              <div class="col-lg-8">
+                {{personal.lastName}}  {{personal.firstName}}
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <p></p>
+    <div class="row">
+      <div class="col-lg-4">
+        <h5>Liste des activités : </h5>
+      </div>
+      <div class="col-lg-8">
+        <ul class="list-group" >
+          <li class="list-group-item" *ngFor="let activity of pool.listOfActivities">
+            <div class="row">
+              <div class="col-lg-8">
+                {{activity.type}}  {{activity.activityDate}} {{activity.activityDate}} {{activity.isPublic}}
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
-

@@ -11,7 +11,7 @@ import {EventManagerService} from '../../../../services/event-manager.service';
 @Component({
   selector: 'app-animal-form',
   templateUrl: './animal-form.component.html',
-  styleUrls: ['./animal-form.component.scss']
+  styleUrls: ['./animal-form.component.css']
 })
 export class AnimalFormComponent implements OnInit {
 

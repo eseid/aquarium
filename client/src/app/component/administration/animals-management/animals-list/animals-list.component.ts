@@ -11,7 +11,7 @@ import {EventManagerService} from '../../../../services/event-manager.service';
 @Component({
   selector: 'app-animals-list',
   templateUrl: './animals-list.component.html',
-  styleUrls: ['./animals-list.component.scss']
+  styleUrls: ['./animals-list.component.css']
 })
 export class AnimalsListComponent implements OnInit {
 

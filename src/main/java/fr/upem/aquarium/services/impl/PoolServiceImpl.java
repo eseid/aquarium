@@ -28,11 +28,6 @@ public class PoolServiceImpl implements PoolService {
 
     @Override
     public Pool update(Pool pool) {
-        if(sectorRepository.existsById(pool.getId())) {
-            logger.info("update success of pool with id " + pool.getId());
-            return sectorRepository.save(pool);
-        }
-        logger.info("pool with id " + pool.getId() + " is not exist, a new pool is created ");
         return sectorRepository.save(pool);
     }
 
