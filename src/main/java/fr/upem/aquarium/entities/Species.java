@@ -13,6 +13,8 @@ public class Species {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name="name")
+    private String name;
     @Column(name = "life_expectancy")
     private int lifeExpectancy;
     private String diet;
@@ -24,11 +26,12 @@ public class Species {
     public Species() {
     }
 
-    public Species(int lifeExpectancy, String diet, boolean isThreat, int threatLevel) {
+    public Species(String name, int lifeExpectancy, String diet, boolean isThreat, int threatLevel) {
         this.lifeExpectancy = lifeExpectancy;
         this.diet = diet;
         this.isThreat = isThreat;
         this.threatLevel = threatLevel;
+        this.name = name;
     }
 
     public Long getId() {
@@ -71,6 +74,14 @@ public class Species {
         this.threatLevel = threatLevel;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -78,19 +89,22 @@ public class Species {
         Species species = (Species) o;
         return lifeExpectancy == species.lifeExpectancy &&
                 isThreat == species.isThreat &&
+                threatLevel == species.threatLevel &&
                 id.equals(species.id) &&
-                diet.equals(species.diet);
+                name.equals(species.name) &&
+                Objects.equals(diet, species.diet);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, lifeExpectancy, diet, isThreat);
+        return Objects.hash(id, name, lifeExpectancy, diet, isThreat, threatLevel);
     }
 
     @Override
     public String toString() {
         return "Species{" +
                 "id=" + id +
+                ", name='" + name + '\'' +
                 ", lifeExpectancy=" + lifeExpectancy +
                 ", diet='" + diet + '\'' +
                 ", isThreat=" + isThreat +

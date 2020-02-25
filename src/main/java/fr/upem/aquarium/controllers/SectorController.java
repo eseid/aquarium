@@ -23,7 +23,11 @@ public class SectorController {
         return new ResponseEntity<>(sectorService.save(sector), HttpStatus.CREATED);
     }
 
-    //@requestParam pour extraire les paramétre de la requéte
+    @PutMapping
+    public ResponseEntity<Sector> update(@RequestBody Sector sector) {
+        return new ResponseEntity<>(sectorService.update(sector), HttpStatus.CREATED);
+    }
+
     @GetMapping
     public ResponseEntity<List<Sector>> findAll() {
         return new ResponseEntity<>(sectorService.findAll(), HttpStatus.OK);
@@ -36,6 +40,7 @@ public class SectorController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") Long id){
+        this.sectorService.deleteById(id);
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 }

@@ -23,7 +23,6 @@ public class AnimalServiceImpl implements AnimalService {
 
     @Override
     public Animal save(Animal animal) {
-
         return animalsRepository.save(animal);
     }
 

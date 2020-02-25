@@ -25,11 +25,9 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Role update(Role role) {
-        if(roleRepository.existsById(role.getId())) {
-            logger.info("update success of role with id " + role.getId());
-            return roleRepository.save(role);
+        if(!roleRepository.existsById(role.getId())) {
+            throw new NotFoundException("Le role " + role.getRoleName() + " existe déjà !");
         }
-        logger.info("role with id " + role.getId() + " is not exist, a new role is created ");
         return roleRepository.save(role);
     }
 

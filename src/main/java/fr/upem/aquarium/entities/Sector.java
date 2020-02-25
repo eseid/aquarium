@@ -11,9 +11,11 @@ import java.util.*;
 public class Sector {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "location")
     private String location;
 
     public Sector() {

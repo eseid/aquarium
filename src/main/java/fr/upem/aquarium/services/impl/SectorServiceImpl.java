@@ -22,18 +22,16 @@ public class SectorServiceImpl implements SectorService {
 
     @Override
     public Sector save(Sector sector) {
-        if(sectorRepository.existsById(sector.getId()))
-            throw new ExistsException( "Sector with id " + sector.getId()+ " exist!");
+        if(sectorRepository.existsByName(sector.getName()))
+            throw new ExistsException( "Le secteur " + sector.getName()+ " existe déjà!");
         return sectorRepository.save(sector);
     }
 
     @Override
     public Sector update(Sector sector) {
-        if(sectorRepository.existsById(sector.getId())) {
-            logger.info("update success of sector with id " + sector.getId());
-            return sectorRepository.save(sector);
+        if(!sectorRepository.existsById(sector.getId())) {
+            throw new NotFoundException("Le secteur avec l'id" + sector.getId() + " est introuvable !");
         }
-        logger.info("sector with id " + sector.getId() + " is not exist, a new sector is created ");
         return sectorRepository.save(sector);
     }
 

@@ -1,6 +1,6 @@
 import {Sector} from './sector.entitie';
 import {Activity} from './activity.entitie';
-import {Personal} from "./personal.entitie";
+import {Personal} from './personal.entitie';
 
 export class Pool {
   constructor(

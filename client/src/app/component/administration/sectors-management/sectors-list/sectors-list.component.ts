@@ -1,52 +1,46 @@
 import { Component, OnInit } from '@angular/core';
+import {Animal} from '../../../../entities/animal.entitie';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {EventManagerService} from '../../../../services/event-manager.service';
+import {Router} from '@angular/router';
+import {MODAL_OPTIONS} from '../../../../utils/app.const';
 import {Sector} from '../../../../entities/sector.entitie';
-import {SectorService} from "../../../../services/sector.service";
-import {Animal} from "../../../../entities/animal.entitie";
-import {AnimalService} from "../../../../services/animal.service";
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {AnimalFormComponent} from "../../animals-management/animal-form/animal-form.component";
-import {MODAL_OPTIONS} from "../../../../utils/app.const";
-import {animate, state, style, transition, trigger} from "@angular/animations";
-import {Pool} from "../../../../entities/pool.entitie";
-import {SectorFormComponent} from "../sector-form/sector-form.component";
+import {SectorService} from '../../../../services/sector.service';
+import {SectorsFormComponent} from '../sectors-form/sectors-form.component';
+import {DeleteFormComponent} from '../delete-form/delete-form.component';
 
 @Component({
   selector: 'app-sectors-list',
   templateUrl: './sectors-list.component.html',
-  styleUrls: ['./sectors-list.component.css'],
-  animations: [
-    trigger('detailExpand', [
-      state('collapsed', style({height: '0px', minHeight: '0'})),
-      state('expanded', style({height: '*'})),
-      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-    ]),
-  ],
+  styleUrls: ['./sectors-list.component.css']
 })
 export class SectorsListComponent implements OnInit {
+
+  listOfSectors: Sector[];
   columnLabels: string[];
 
-  columnsToDisplay = ['id', 'name', 'location'];
-  expandedElement: Sector | null;
-  listOfSectors: Sector[];
-
-
-  constructor(private sectorService: SectorService, private modalService: NgbModal) {
-    this.columnLabels = ['id', 'name', 'location'];
+  constructor(
+    private sectorService: SectorService,
+    private modalService: NgbModal,
+    private eventManager: EventManagerService,
+    private router: Router
+  ) {
+    this.columnLabels = ['#', 'nom', 'location'];
   }
 
   ngOnInit() {
-    this.findAllSectors();
+    this.findAllAnimals();
+    this.subscribeRefreshListEvent();
   }
 
-  private findAllSectors() {
+  findAllAnimals() {
     this.sectorService.findAll().subscribe(response => {
       this.listOfSectors = response.body;
-      console.log(this.listOfSectors);
     });
   }
 
-  private openSectorForm(sector: Sector) {
-    const modalRef = this.modalService.open(SectorFormComponent, MODAL_OPTIONS);
+  openSectorForm(sector?) {
+    const modalRef = this.modalService.open(SectorsFormComponent, MODAL_OPTIONS);
     if (sector) {
       modalRef.componentInstance.sector = sector;
     } else {
@@ -54,12 +48,45 @@ export class SectorsListComponent implements OnInit {
     }
   }
 
-  private deleteAnimal(sector: Sector) {
-    if (this.sectorService.deleteById(sector.id)) {
-      console.log("deleted");
-    } else {
-      console.log("not deleted");
-    }
+  navigateToDetails(sector: Sector) {
+    const detailsURL = `sectors-management/sectors-details/${sector.id}`;
+    this.router.navigate([detailsURL]);
+  }
+
+  openDeleteConfirm(sector: Sector) {
+    const modalRef = this.modalService.open(DeleteFormComponent, MODAL_OPTIONS);
+    modalRef.componentInstance.sector = sector;
+  }
+
+  subscribeRefreshListEvent() {
+    this.eventManager.subscribe('refresh-sectors-list', event => {
+      if (event) {
+        const sector: Sector = JSON.parse(JSON.stringify(event.content.data));
+        if (event.content.action === 'add') {
+          this.listOfSectors.push(sector);
+        } else if (event.content.action === 'update') {
+          this.updateItem(sector);
+        } else if (event.content.action === 'delete') {
+          this.deleteItem(sector);
+        }
+      }
+    });
+  }
+
+  updateItem(newItem) {
+    const updateItem = this.listOfSectors.find(this.findIndexToUpdate, newItem.id);
+    const index = this.listOfSectors.indexOf(updateItem);
+    this.listOfSectors[index] = newItem;
+  }
+
+  deleteItem(item) {
+    const searchedItem = this.listOfSectors.find(this.findIndexToUpdate, item.id);
+    const index = this.listOfSectors.indexOf(searchedItem);
+    this.listOfSectors.splice(index, 1);
+  }
+
+  findIndexToUpdate(newItem) {
+    return newItem.id === this;
   }
 
 }

@@ -1,19 +1,21 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {RouterModule, Routes} from "@angular/router";
-import {ActivitiesListComponent} from "../../aquarium-management/activity-management/activities-list/activities-list.component";
-import {SectorsListComponent} from "./sectors-list/sectors-list.component";
+import { Routes, RouterModule } from '@angular/router';
+import {SectorsListComponent} from './sectors-list/sectors-list.component';
+import {SectorsDetailsComponent} from './sectors-details/sectors-details.component';
 
 
 const routes: Routes = [
   {
     path: 'sectors-list',
     component: SectorsListComponent
+  },
+  {
+    path: 'sectors-details/:id',
+    component: SectorsDetailsComponent
   }
 ];
 
 @NgModule({
-  declarations: [],
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })

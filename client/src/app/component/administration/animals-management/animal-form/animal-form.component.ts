@@ -30,7 +30,6 @@ export class AnimalFormComponent implements OnInit {
   ngOnInit() {
     this.getListOfPools();
     this.getListOfSpecies();
-    console.log(this.animal);
   }
 
   getListOfPools() {

@@ -1,17 +1,20 @@
-<!--
 <div class="row">
-  <h3>List des animaux</h3>
+  <h3>List des Secteurs</h3>
 </div>
 <br>
 <div class="row float-right">
-  <button class="btn btn-sm btn-success" (click)="openAnimalForm()">Ajouter</button>
+  <button class="btn btn-sm btn-success" (click)="openSectorForm()">
+    <i class="fa fa-plus"></i>
+    Ajouter
+  </button>
 </div>
 <br><br>
 <div class="row">
   <table class="table">
     <thead>
     <tr>
-      <th *ngFor="let label of columnLabels" class="text-uppercase" scope="col">{{label}}</th>
+      <th scope="col" *ngFor="let label of columnLabels" class="text-uppercase">{{label}}</th>
+      <th scope="col">Action</th>
     </tr>
     </thead>
     <tbody>
@@ -20,60 +23,17 @@
       <td>{{sector.name}}</td>
       <td>{{sector.location}}</td>
       <td>
-        <button class="btn btn-sm btn-primary" (click)="openAnimalForm(sector)">update</button>
-        <button class="btn btn-sm btn-danger" (click)="deleteAnimal(sector)">delete</button>
+                  <span class="action-icon text-info" (click)="navigateToDetails(sector)" title="Détails">
+                    <i class="fa fa-eye"></i>
+                  </span>
+        <span class="action-icon text-primary" (click)="openSectorForm(sector)" title="Mettre à jour">
+                    <i class="fa fa-edit"></i>
+                  </span>
+        <span class="action-icon text-danger" (click)="openDeleteConfirm(sector)" title="Supprimer">
+                    <i class="fa fa-trash-alt"></i>
+                  </span>
       </td>
     </tr>
     </tbody>
   </table>
 </div>
--->
-
-
-<table [dataSource]="listOfSectors"
-       class="mat-elevation-z8" mat-table
-       multiTemplateDataRows>
-  <ng-container *ngFor="let column of columnsToDisplay" matColumnDef="{{column}}">
-    <th *matHeaderCellDef mat-header-cell> {{column}} </th>
-    <td *matCellDef="let element" mat-cell> {{element[column]}} </td>
-
-
-  </ng-container>
-
-  <ng-container matColumnDef="expandedDetail">
-    <td *matCellDef="let element" [attr.colspan]="columnsToDisplay.length" mat-cell>
-
-      <div [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'"
-           class="example-element-detail">
-
-
-        <div class="example-element-description">
-
-          <span class="example-element-description-attribution">
-
-
-
-          </span>
-        </div>
-
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="openSectorForm(element)">Modifier</button>
-        <button type="button" class="btn btn-danger" (click)="activeModal.close('Close click')">supprimer</button>
-      </div>
-    </td>
-  </ng-container>
-
-
-
-  <tr *matHeaderRowDef="columnsToDisplay" mat-header-row></tr>
-  <tr (click)="expandedElement = expandedElement === element ? null : element"
-      *matRowDef="let element; columns: columnsToDisplay;"
-      [class.example-expanded-row]="expandedElement === element"
-      class="example-element-row"
-      mat-row>
-  </tr>
-  <tr *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row" mat-row></tr>
-</table>
-
