@@ -25,6 +25,10 @@ const routes: Routes = [
     loadChildren: () => import('./component/administration/sectors-management/sectors-management.module').then(mod => mod.SectorsManagementModule)
   },
   {
+    path: 'roles-management',
+    loadChildren: () => import('./component/administration/roles-management/roles-management.module').then(mod => mod.RolesManagementModule)
+  },
+  {
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'

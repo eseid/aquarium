@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Species} from '../../../../entities/species.entitie';
-import {SpeciesService} from '../../../../services/species.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {EventManagerService} from '../../../../services/event-manager.service';
 import {Router} from '@angular/router';
-import {SpeciesFormComponent} from '../../species-management/species-form/species-form.component';
 import {MODAL_OPTIONS} from '../../../../utils/app.const';
-import {DeleteConfirmComponent} from '../../species-management/delete-confirm/delete-confirm.component';
 import {Role} from '../../../../entities/role.entitie';
 import {RoleService} from '../../../../services/role.service';
 
@@ -42,7 +38,7 @@ export class RolesListComponent implements OnInit {
   }
 
   openSectorForm(role?) {
-    const modalRef = this.modalService.open(SpeciesFormComponent, MODAL_OPTIONS);
+    const modalRef = this.modalService.open(, MODAL_OPTIONS);
     if (role) {
       modalRef.componentInstance.species = role;
     } else {
@@ -50,13 +46,10 @@ export class RolesListComponent implements OnInit {
     }
   }
 
-  openDeleteConfirm(role: Role) {
-    const modalRef = this.modalService.open(DeleteConfirmComponent, MODAL_OPTIONS);
-    modalRef.componentInstance.species = role;
-  }
+
 
   subscribeRefreshListEvent() {
-    this.eventManager.subscribe('refresh-species-list', event => {
+    this.eventManager.subscribe('refresh-roles-list', event => {
       if (event) {
         const role: Role = JSON.parse(JSON.stringify(event.content.data));
         if (event.content.action === 'add') {
