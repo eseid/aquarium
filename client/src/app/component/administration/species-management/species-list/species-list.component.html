@@ -1,0 +1,41 @@
+<div class="row">
+  <h3>Liste des espèces</h3>
+</div>
+<br>
+<div class="row float-right">
+  <button class="btn btn-sm btn-success" (click)="openSectorForm()">
+    <i class="fa fa-plus"></i>
+    Ajouter
+  </button>
+</div>
+<br><br>
+<div class="row">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col" *ngFor="let label of columnLabels" class="text-uppercase">{{label}}</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let species of listOfSpecies">
+      <td align="center" scope="row">{{species.id}}</td>
+      <td >{{species.name}}</td>
+      <td align="center">{{species.lifeExpectancy}}</td>
+      <td >{{species.diet}}</td>
+      <td align="center" *ngIf="species.isThreat">Oui</td>
+      <td align="center" *ngIf="!species.isThreat">Non</td>
+      <td align="center">{{species.threatLevel}}</td>
+
+      <td>
+        <span class="action-icon text-primary" (click)="openSectorForm(species)" title="Mettre à jour">
+                    <i class="fa fa-edit"></i>
+                  </span>
+        <span class="action-icon text-danger" (click)="openDeleteConfirm(species)" title="Supprimer">
+                    <i class="fa fa-trash-alt"></i>
+                  </span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

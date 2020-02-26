@@ -25,6 +25,10 @@ const routes: Routes = [
     loadChildren: () => import('./component/administration/sectors-management/sectors-management.module').then(mod => mod.SectorsManagementModule)
   },
   {
+    path: 'species-management',
+    loadChildren: () => import('./component/administration/species-management/species-management.module').then(mod => mod.SpeciesManagementModule)
+  },
+  {
     path: 'roles-management',
     loadChildren: () => import('./component/administration/roles-management/roles-management.module').then(mod => mod.RolesManagementModule)
   },

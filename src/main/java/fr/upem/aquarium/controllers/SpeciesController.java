@@ -22,6 +22,11 @@ public class SpeciesController {
         return new ResponseEntity<>(speciesService.save(species), HttpStatus.CREATED);
     }
 
+    @PutMapping
+    public ResponseEntity<Species> update(@RequestBody Species species) {
+        return new ResponseEntity<>(speciesService.update(species), HttpStatus.CREATED);
+    }
+
     //@requestParam pour extraire les paramétre de la requéte
     @GetMapping
     public ResponseEntity<List<Species>> findAll() {

@@ -5,6 +5,8 @@ import {Router} from '@angular/router';
 import {MODAL_OPTIONS} from '../../../../utils/app.const';
 import {Role} from '../../../../entities/role.entitie';
 import {RoleService} from '../../../../services/role.service';
+import {SpeciesFormComponent} from '../../species-management/species-form/species-form.component';
+import {DeleteConfirmComponent} from '../../species-management/delete-confirm/delete-confirm.component';
 
 @Component({
   selector: 'app-roles-list',
@@ -38,7 +40,7 @@ export class RolesListComponent implements OnInit {
   }
 
   openSectorForm(role?) {
-    const modalRef = this.modalService.open(, MODAL_OPTIONS);
+    const modalRef = this.modalService.open(SpeciesFormComponent, MODAL_OPTIONS);
     if (role) {
       modalRef.componentInstance.species = role;
     } else {
@@ -46,7 +48,10 @@ export class RolesListComponent implements OnInit {
     }
   }
 
-
+  openDeleteConfirm(role: Role) {
+    const modalRef = this.modalService.open(DeleteConfirmComponent, MODAL_OPTIONS);
+    modalRef.componentInstance.species = role;
+  }
 
   subscribeRefreshListEvent() {
     this.eventManager.subscribe('refresh-roles-list', event => {
