@@ -45,20 +45,36 @@ export class PoolUpdateComponent implements OnInit {
     this.activePersonal = false;
     this.activeActivities = false;
     this.activeResponsible = false;
+
   }
 
   ngOnInit() {
         this.getListOfSectors(),
         this.getListOfPersonnals(),
-        this.getListOfActivities()
+        this.getListOfActivities(),
+          this.initPool()
+  }
+
+  initPool(){
+    if (!this.pool.listOfPersonals){
+      this.pool.listOfPersonals = [];
+    }
   }
 
   activeSelectPersonal(){
-    this.activePersonal = true;
+    if(this.activePersonal){
+      this.activePersonal = false;
+    }else{
+      this.activePersonal = true;
+    }
   }
 
   activeSelectActivity(){
-    this.activeActivities = true;
+    if(this.activeActivities){
+      this.activeActivities = false;
+    }else{
+      this.activeActivities = true;
+    }
   }
 
   activeSelectResponsible(){
@@ -66,12 +82,25 @@ export class PoolUpdateComponent implements OnInit {
   }
 
   addPersonal(){
-    console.log(this.pool.listOfPersonals.length);
-    this.pool.listOfPersonals.push(this.personalToAdd);
+    if(this.personalToAdd) {
+      if (this.pool.listOfPersonals) {
+        this.pool.listOfPersonals.push(this.personalToAdd);
+      } else {
+        var personals: Personal[] = [];
+        personals.push(this.personalToAdd);
+        this.pool.listOfPersonals = personals;
+      }
+    }
   }
 
   addActivity(){
-    this.pool.listOfActivities.push(this.activityToAdd);
+    if(this.pool.listOfActivities){
+      this.pool.listOfActivities.push(this.activityToAdd);
+    } else {
+      var ativities: Activity[] = [];
+      ativities.push(this.activityToAdd);
+      this.pool.listOfActivities = ativities;
+    }
   }
 
   getListOfPersonnals() {
