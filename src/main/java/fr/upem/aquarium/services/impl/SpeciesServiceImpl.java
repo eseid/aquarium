@@ -29,8 +29,8 @@ public class SpeciesServiceImpl implements SpeciesService {
 
     @Override
     public Species update(Species species) {
-        if(!speciesRepository.existsById(species.getId())) {
-           throw new NotFoundException("L'espèce avec l'id "+ species.getId() + " est introuvable !");
+        if(!speciesRepository.existsByName(species.getName())) {
+           throw new NotFoundException("L'espèce avec le nom "+ species.getName() + " exist déja !");
         }
         return speciesRepository.save(species);
     }
