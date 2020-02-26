@@ -7,6 +7,7 @@ import {Role} from '../../../../entities/role.entitie';
 import {RoleService} from '../../../../services/role.service';
 import {SpeciesFormComponent} from '../../species-management/species-form/species-form.component';
 import {DeleteConfirmComponent} from '../../species-management/delete-confirm/delete-confirm.component';
+import {RolesFormComponent} from '../roles-form/roles-form.component';
 
 @Component({
   selector: 'app-roles-list',
@@ -39,12 +40,12 @@ export class RolesListComponent implements OnInit {
     });
   }
 
-  openSectorForm(role?) {
-    const modalRef = this.modalService.open(SpeciesFormComponent, MODAL_OPTIONS);
+  openRoleForm(role?) {
+    const modalRef = this.modalService.open(RolesFormComponent, MODAL_OPTIONS);
     if (role) {
-      modalRef.componentInstance.species = role;
+      modalRef.componentInstance.role = role;
     } else {
-      modalRef.componentInstance.species = new Role();
+      modalRef.componentInstance.role = new Role();
     }
   }
 

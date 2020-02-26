@@ -2,33 +2,20 @@
   <h3>Liste des roles</h3>
 </div>
 <br>
-<div class="row float-right">
-  <button class="btn btn-sm btn-success" (click)="openSectorForm()">
-    <i class="fa fa-plus"></i>
-    Ajouter
-  </button>
-</div>
+
 <br><br>
 <div class="row">
   <table class="table">
     <thead>
     <tr>
       <th scope="col" *ngFor="let label of columnLabels" class="text-uppercase">{{label}}</th>
-      <th scope="col">Action</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let role of listOfRoles">
-      <td align="center" scope="row">{{role.id}}</td>
+      <td scope="row">{{role.id}}</td>
       <td >{{role.roleName}}</td>
-      <td>
-        <span class="action-icon text-primary" (click)="openSectorForm(role)" title="Mettre à jour">
-                    <i class="fa fa-edit"></i>
-                  </span>
-        <span class="action-icon text-danger" (click)="openDeleteConfirm(role)" title="Supprimer">
-                    <i class="fa fa-trash-alt"></i>
-                  </span>
-      </td>
+
     </tr>
     </tbody>
   </table>

@@ -26,6 +26,11 @@ public class RoleController {
         return new ResponseEntity<>(roleService.save(role), HttpStatus.CREATED);
     }
 
+    @PutMapping
+    public ResponseEntity<Role> update(@RequestBody Role role) {
+        return new ResponseEntity<>(roleService.update(role), HttpStatus.CREATED);
+    }
+
     //@requestParam pour extraire les paramétre de la requéte
     @GetMapping
     public ResponseEntity<List<Role>> findAll() {
