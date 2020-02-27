@@ -1,0 +1,61 @@
+<div class="modal-header">
+  <h4 class="modal-title">Ajouter ou modifier les information d'une activity</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form name="form">
+    <div class="form-group row">
+      <label for="type" class="col-sm-2 col-form-label">type</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="type" name ="type" placeholder="type" [(ngModel)]="activity.type">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="Date" class="col-sm-2 col-form-label">Date</label>
+      <div class="col-sm-10">
+      <form class="form-inline">
+        <div class="form-group">
+          <div class="input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd"
+                   name="dp" [(ngModel)]="model" ngbDatepicker [dayTemplate]="customDay" [markDisabled]="isDisabled" #d="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+            </div>
+          </div>
+        </div>
+      </form>
+      </div>
+
+      <ng-template #customDay let-date let-currentMonth="currentMonth" let-selected="selected" let-disabled="disabled" let-focused="focused">
+  <span class="custom-day" [class.weekend]="isWeekend(date)" [class.focused]="focused"
+        [class.bg-primary]="selected" [class.hidden]="date.month !== currentMonth" [class.text-muted]="disabled">
+    {{ date.day }}
+  </span>
+      </ng-template>
+    </div>
+
+    <div class="form-group row">
+      <label for="isPublic" class="col-sm-2 col-form-label">Ouvert au publique</label>
+      <div class="col-sm-10">
+        <select class="form-control" id="isPublic" name ="isPublic" [(ngModel)]="activity.isPublic">
+          <option [ngValue]="true" selected>Oui</option>
+          <option [ngValue]="false">Non</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="description" class="col-sm-2 col-form-label">Description</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="description"  name="description" placeholder="description" [(ngModel)]="activity.descriptionActivity">
+      </div>
+    </div>
+
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="save()">Sauvegarder</button>
+  <button type="button" class="btn btn-outline-default" (click)="activeModal.close('Close click')">Annuler</button>
+</div>

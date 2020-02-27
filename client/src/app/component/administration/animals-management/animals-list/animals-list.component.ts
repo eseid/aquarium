@@ -59,7 +59,7 @@ export class AnimalsListComponent implements OnInit {
   }
 
   subscribeRefreshListEvent() {
-    this.eventManager.subscribe('refresh-animals-list', event => {
+    this.eventManager.subscribe('refresh-activity-list', event => {
       if (event) {
         const animal: Animal = JSON.parse(JSON.stringify(event.content.data));
         if (event.content.action === 'add') {

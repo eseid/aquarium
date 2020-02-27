@@ -1,0 +1,39 @@
+<div class="row">
+  <h3>List des activities</h3>
+</div>
+<br>
+<div class="row float-right">
+  <button class="btn btn-sm btn-success" (click)="openActivityForm()">
+    <i class="fa fa-plus"></i>
+    Ajouter
+  </button>
+</div>
+<br><br>
+<div class="row">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col" *ngFor="let label of columnLabels" class="text-uppercase">{{label}}</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let activity of listOfActivity">
+      <td scope="row">{{activity.id}}</td>
+      <td>{{activity.type}}</td>
+      <td>{{activity.activityDate | date:'medium' }}</td>
+      <td *ngIf="activity.isPublic">Oui</td>
+      <td *ngIf="!activity.isPublic">Non</td>
+      <td>{{activity.descriptionActivity}}</td>
+      <td>
+        <span class="action-icon text-primary" (click)="openActivityForm(activity)" title="Mettre à jour">
+                    <i class="fa fa-edit"></i>
+                  </span>
+        <span class="action-icon text-danger" (click)="deleteActivity(activity)" title="Supprimer">
+                    <i class="fa fa-trash-alt"></i>
+                  </span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

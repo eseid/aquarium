@@ -33,6 +33,10 @@ const routes: Routes = [
     loadChildren: () => import('./component/administration/roles-management/roles-management.module').then(mod => mod.RolesManagementModule)
   },
   {
+    path: 'activities-management',
+    loadChildren: () => import('./component/administration/activities-management/activities-management.module').then(mod => mod.ActivitiesManagementModule)
+  },
+  {
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'
