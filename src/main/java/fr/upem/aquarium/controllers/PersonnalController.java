@@ -22,6 +22,12 @@ public class PersonnalController {
         return new ResponseEntity<>(personnalService.save(personnal), HttpStatus.CREATED);
     }
 
+    @PutMapping
+    public ResponseEntity<Personnal> update(@RequestBody  Personnal personnal) {
+        Personnal savedPool = personnalService.update(personnal);
+        return new ResponseEntity<Personnal>(savedPool, HttpStatus.OK);
+    }
+
     //@requestParam pour extraire les paramétre de la requéte
     @GetMapping
     public ResponseEntity<List<Personnal>> findAll() {

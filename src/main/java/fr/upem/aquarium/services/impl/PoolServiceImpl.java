@@ -19,40 +19,43 @@ import java.util.logging.Logger;
 public class PoolServiceImpl implements PoolService {
     private Logger logger = Logger.getLogger(PoolService.class.getName());
     @Autowired
-    private PoolRepository sectorRepository;
+    private PoolRepository poolRepository;
 
     @Override
     public Pool save(Pool pool) {
-        return sectorRepository.save(pool);
+        if(poolRepository.existsByName(pool.getName()))
+            throw new ExistsException( "The pool with name : " + pool.getName()+ " exist !");
+        return poolRepository.save(pool);
     }
 
     @Override
     public Pool update(Pool pool) {
-        System.out.println("*****************************");
-        return sectorRepository.save(pool);
+        if(!poolRepository.existsById(pool.getId()))
+            throw new ExistsException( "The pool with id" + pool.getId()+ " not exist !");
+        return poolRepository.save(pool);
     }
 
     @Override
     public List<Pool> findAll() {
-        return sectorRepository.findAll();
+        return poolRepository.findAll();
     }
 
     @Override
     public Optional<Pool> findById(Long id) {
-        if (!sectorRepository.existsById(id)) {
+        if (!poolRepository.existsById(id)) {
             logger.severe("pool with id " + id + " is not exist");
             throw new NotFoundException("pool not found in database");
         }
-        return sectorRepository.findById(id);
+        return poolRepository.findById(id);
     }
 
     @Override
     public void deleteById(Long id) {
-        if (!sectorRepository.existsById(id)) {
+        if (!poolRepository.existsById(id)) {
             logger.info("pool with id " + id + " is not exist");
             throw new NotFoundException("pool with id " + id + " is not exist");
         }
-        sectorRepository.deleteById(id);
+        poolRepository.deleteById(id);
         logger.info("pool with id " + id + " is deleted with success");
     }
 }

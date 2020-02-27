@@ -23,16 +23,14 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public Activity save(Activity activity) {
-
         return activityRepository.save(activity);
     }
 
     @Override
     public Activity update(Activity activity) {
-        if(activityRepository.existsById(activity.getId())) {
-            logger.info("update success of pool with id " + activity.getId());
-            return activityRepository.save(activity);
-        }
+        if(!activityRepository.existsById(activity.getId()))
+            throw new ExistsException( "The activity with l'id" + activity.getId()+ " is not exist !");
+
         logger.info("pool with id " + activity.getId() + " is not exist, a new pool is created ");
         return activityRepository.save(activity);
     }

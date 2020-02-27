@@ -23,14 +23,14 @@ public class SectorServiceImpl implements SectorService {
     @Override
     public Sector save(Sector sector) {
         if(sectorRepository.existsByName(sector.getName()))
-            throw new ExistsException( "Le secteur " + sector.getName()+ " existe déjà!");
+            throw new ExistsException( "The Sector " + sector.getName()+ " exist!");
         return sectorRepository.save(sector);
     }
 
     @Override
     public Sector update(Sector sector) {
         if(!sectorRepository.existsById(sector.getId())) {
-            throw new NotFoundException("Le secteur avec l'id" + sector.getId() + " est introuvable !");
+            throw new NotFoundException("The sector with id " + sector.getId() + " not exist !");
         }
         return sectorRepository.save(sector);
     }

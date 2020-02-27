@@ -23,16 +23,15 @@ public class AnimalServiceImpl implements AnimalService {
 
     @Override
     public Animal save(Animal animal) {
+        if(animalsRepository.existsByName(animal.getName()))
+            throw new ExistsException( "The animal with name : " + animal.getName()+ " exist ! ");
         return animalsRepository.save(animal);
     }
 
     @Override
     public Animal update(Animal animal) {
-        if(!animalsRepository.existsByName(animal.getName())){
-            logger.info("new animal is add");
-            return animalsRepository.save(animal);
-        }
-        logger.info("update animal is done with success");
+        if(!animalsRepository.existsById(animal.getId()))
+            throw new ExistsException( "The animal with id : " + animal.getId()+ " not exist !");
         return animalsRepository.save(animal);
     }
 
@@ -56,7 +55,7 @@ public class AnimalServiceImpl implements AnimalService {
     public void deleteById(Long id) {
         if (!animalsRepository.existsById(id)) {
             logger.info("L'animal avec l'ID = {} n'existe pas");
-            throw new NotFoundException("La Commande avec l'ID " + id + " n'existe pas !");
+            throw new NotFoundException("La animal avec l'ID " + id + " n'existe pas !");
         }
         animalsRepository.deleteById(id);
         logger.info("L'animal avec l'ID = {} a été supprimée avec succès");

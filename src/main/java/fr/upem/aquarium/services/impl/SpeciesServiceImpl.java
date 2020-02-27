@@ -23,14 +23,14 @@ public class SpeciesServiceImpl implements SpeciesService {
     @Override
     public Species save(Species species) {
         if(speciesRepository.existsByName(species.getName()))
-            throw new ExistsException( "L'espèce " + species.getName()+ " existe déjà !");
+            throw new ExistsException( "The species with name : " + species.getName()+ " exist !");
         return speciesRepository.save(species);
     }
 
     @Override
     public Species update(Species species) {
         if(!speciesRepository.existsByName(species.getName())) {
-           throw new NotFoundException("L'espèce avec le nom "+ species.getName() + " exist déja !");
+           throw new NotFoundException("The species with name : "+ species.getName() + " not exist !");
         }
         return speciesRepository.save(species);
     }

@@ -26,11 +26,16 @@ public class PersonnalServiceImpl implements PersonnalService {
 
     @Override
     public Personnal save(Personnal personnal) {
+        if(personnalRepository.existsBySocialSecurityNumber(personnal.getSocialSecurityNumber()))
+            throw new ExistsException( "The personal with social security number : " + personnal.getSocialSecurityNumber() + " exist ");
         return personnalRepository.save(personnal);
     }
 
     @Override
     public Personnal update(Personnal personnal) {
+        if(!personnalRepository.existsById(personnal.getId())) {
+            throw new NotFoundException("The personal with id " + personnal.getId() + " not exist !");
+        }
         return personnalRepository.save(personnal);
     }
 

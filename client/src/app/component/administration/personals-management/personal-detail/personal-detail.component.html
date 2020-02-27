@@ -1,0 +1,82 @@
+<script src="personal-detail.component.ts"></script>
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <h3>Informations sur le personnel</h3>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-lg-4">
+        <h5>prénom : </h5>
+      </div>
+      <div class="col-lg-8">
+        <p>{{personal.firstName}}</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <h5>Nom : </h5>
+      </div>
+      <div class="col-lg-8">
+        <p>{{personal.lastName}}</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <h5>sexe : </h5>
+      </div>
+      <div class="col-lg-8">
+        <p>{{personal.sex}}</p>
+      </div>
+    </div>
+
+    <div class="row">
+    <div class="col-lg-4">
+      <h5>adresse : </h5>
+    </div>
+    <div class="col-lg-8">
+      <p>{{personal.address}}</p>
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <h5>Date de naissance : </h5>
+      </div>
+      <div class="col-lg-8">
+        <p>{{personal.birthDay}}</p>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-lg-4">
+        <h5>N° de sécurité sociale : </h5>
+      </div>
+      <div class="col-lg-8">
+        <p>{{personal.socialSecurityNumber}}</p>
+      </div>
+    </div>
+
+    <p></p>
+    <div class="row">
+      <div class="col-lg-4">
+        <h5>Liste des Roles : </h5>
+      </div>
+      <div class="col-lg-8">
+        <ul class="list-group" >
+          <li class="list-group-item" *ngFor="let role of personal.listOfRoles">
+            <div class="row">
+              <div class="col-lg-8">
+                {{role.roleName}}
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>

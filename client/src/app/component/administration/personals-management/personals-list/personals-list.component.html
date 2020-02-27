@@ -1,0 +1,45 @@
+<div class="row">
+  <h3>List des personnels</h3>
+</div>
+<br>
+<div class="row float-right">
+  <button class="btn btn-sm btn-success" (click)="openPersonalForm()">
+    <i class="fa fa-plus"></i>
+    Ajouter
+  </button>
+</div>
+<br><br>
+<div class="row">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col" *ngFor="let label of columnLabels" class="text-uppercase">{{label}}</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let personal of listOfPersonal">
+      <td scope="row">{{personal.id}}</td>
+      <td>{{personal.firstName}}</td>
+      <td>{{personal.lastName}}</td>
+      <td *ngIf="personal.sex == 'Man'">Homme</td>
+      <td *ngIf="personal.sex == 'Women'">Femme</td>
+      <td *ngIf="personal.sex != 'Women' && personal.sex != 'Man' "></td>
+      <td>{{personal.address}}</td>
+      <td>{{personal.birthDay | date:'medium'}}</td>
+      <td>{{personal.socialSecurityNumber}}</td>
+      <td>
+                  <span class="action-icon text-info" (click)="navigateToDetails(personal)" title="Détails">
+                    <i class="fa fa-eye"></i>
+                  </span>
+        <span class="action-icon text-primary" (click)="openPersonalForm(personal)" title="Mettre à jour">
+                    <i class="fa fa-edit"></i>
+                  </span>
+        <span class="action-icon text-danger" (click)="deletePersonal(personal)" title="Supprimer">
+                    <i class="fa fa-trash-alt"></i>
+                  </span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -20,12 +20,15 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Role save(Role role) {
+        //if(roleRepository.existsByRoleName(role.getRoleName()))
+          //  throw new ExistsException( "The role with name : " + role.getRoleName()+ " exist !");
         return roleRepository.save(role);
     }
 
     @Override
     public Role update(Role role) {
-
+        if(!roleRepository.existsById(role.getId()))
+            throw new ExistsException( "The role with id" + role.getId()+ " not exist !");
         return roleRepository.save(role);
     }
 

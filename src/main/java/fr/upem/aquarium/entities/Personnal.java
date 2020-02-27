@@ -19,6 +19,8 @@ public class Personnal implements Serializable {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
+    @Column(name = "sex")
+    private String sex;
     @Column(name = "address")
     private String address;
     @Column(name = "birth_day")
@@ -51,9 +53,10 @@ public class Personnal implements Serializable {
     public Personnal() {
     }
 
-    public Personnal(String firstName, String lastName, String address, Instant birthDay, String socialSecurityNumber, Set<Role> listOfRoles) {
+    public Personnal(String firstName, String lastName, String sex, String address, Instant birthDay, String socialSecurityNumber, Set<Role> listOfRoles) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.sex = sex;
         this.address = address;
         this.birthDay = birthDay;
         this.socialSecurityNumber = socialSecurityNumber;
@@ -82,6 +85,14 @@ public class Personnal implements Serializable {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
     public String getAddress() {
