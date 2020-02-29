@@ -30,6 +30,7 @@ export class PoolUpdateComponent implements OnInit {
   personalToAdd: Personal;
   activityToAdd: Activity;
   responsible: Personal;
+  states: string[] = ['DIRTY', 'CLEAN'];
 
   constructor(
     private activateRoute: ActivatedRoute,
@@ -86,7 +87,7 @@ export class PoolUpdateComponent implements OnInit {
       if (this.pool.listOfPersonals) {
         this.pool.listOfPersonals.push(this.personalToAdd);
       } else {
-        var personals: Personal[] = [];
+        const personals: Personal[] = [];
         personals.push(this.personalToAdd);
         this.pool.listOfPersonals = personals;
       }

@@ -33,7 +33,7 @@ export class AccountService {
   public isResponsable(): boolean {
     const loginResponse: LoginResponse = this.getCurrentUser();
     if (loginResponse) {
-      loginResponse.currentUser.listOfRoles.some(item => item.roleName === 'ROLE_RESPONSIBLE');
+      return loginResponse.currentUser.listOfRoles.some(item => item.roleName === 'ROLE_RESPONSIBLE');
     }
     return false;
   }
@@ -41,7 +41,7 @@ export class AccountService {
   public isEmployee(): boolean {
     const loginResponse: LoginResponse = this.getCurrentUser();
     if (loginResponse) {
-      loginResponse.currentUser.listOfRoles.some(item => item.roleName === 'ROLE_EMPLOYEE');
+      return loginResponse.currentUser.listOfRoles.some(item => item.roleName === 'ROLE_EMPLOYEE');
     }
     return false;
   }
@@ -49,7 +49,7 @@ export class AccountService {
   public isAdmin(): boolean {
     const loginResponse: LoginResponse = this.getCurrentUser();
     if (loginResponse) {
-      loginResponse.currentUser.listOfRoles.some(item => item.roleName === 'ROLE_ADMIN');
+      return loginResponse.currentUser.listOfRoles.some(item => item.roleName === 'ROLE_ADMIN');
     }
     return false;
   }

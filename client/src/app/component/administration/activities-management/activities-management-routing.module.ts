@@ -11,6 +11,11 @@ const routes: Routes = [
     path: 'activities-list',
     component: ActivityListComponent,
     canActivate: [ResponsableGuard]
+  },
+  {
+    path: '',
+    redirectTo: '/acitivities-management/activities-list',
+    pathMatch: 'full'
   }
 ];
 

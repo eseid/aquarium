@@ -1,7 +1,4 @@
 import {Role} from './role.entitie';
-import {Pool} from './pool.entitie';
-import {Activity} from './activity.entitie';
-import {Sector} from "./sector.entitie";
 
 export class Personal {
 
@@ -14,5 +11,7 @@ export class Personal {
     public birthDay?: Date,
     public socialSecurityNumber?: string,
     public listOfRoles?: Role[],
+    public email?: string,
+    public password?: string
   ) {}
 }

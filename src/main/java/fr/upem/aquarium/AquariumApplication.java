@@ -58,19 +58,38 @@ public class AquariumApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Role role = new Role(RoleName.EMPLOYEE);
+        Role role = new Role(RoleName.ROLE_EMPLOYEE);
         roleService.save(role);
         Set<Role> roles = new HashSet<>();
         roles.add(role);
+        Role adminRole = new Role(RoleName.ROLE_ADMIN);
+        adminRole = roleService.save(adminRole);
+        Set<Role> adminRoles = new HashSet<>();
+        adminRoles.add(adminRole);
+
+        Role responsableRole = new Role(RoleName.ROLE_RESPONSIBLE);
+        responsableRole = roleService.save(responsableRole);
+        Set<Role> responsableRoles = new HashSet<>();
+        responsableRoles.add(responsableRole);
+
+        Personnal admin = new Personnal("Admin", "Admin", null, null,
+                null, null,
+                "admin@localhost", "Admin@75#",  adminRoles);
+
         Personnal eseid = new Personnal("Eseid", "BENMAMMAR", "homme", "Noisy",
                 Instant.parse("1993-01-01T10:12:35Z"), "123345637890",
                 "eseidbenmamer@gmail.com", "eseid@06",  roles);
+
+        Personnal responsable = new Personnal("Responsable1", "Responsable1", "homme", "Noisy",
+                Instant.parse("1993-01-01T10:12:35Z"), "1233456378908999",
+                "responsable1@gmail.com", "Res1@06",  responsableRoles);
 
         Personnal john = new Personnal("john", "john", "homme", "Noisy",
                 Instant.parse("1993-01-01T10:12:35Z"), "123345617890","john@outlook.fr" , "John@2020" , roles);
         personnalService.save(john);
         personnalService.save(eseid);
-
+        personnalService.save(admin);
+        personnalService.save(responsable);
 
         Sector sector = this.sectorRepository.save(new Sector("Atlantique","secteur_1"));
         Activity activity = activityService.save(new Activity("nourrissage", Instant.parse("1993-01-01T10:12:35Z"), true, "nourrir les tortues"));

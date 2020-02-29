@@ -15,7 +15,12 @@ const routes: Routes = [
   {
     path: 'sectors-details/:id',
     component: SectorsDetailsComponent,
-    canActivate: [AdminGuard]
+    canActivate: [AdminGuard],
+  },
+  {
+    path: '',
+    redirectTo: '/sectors-management/sectors-list',
+    pathMatch: 'full'
   }
 ];
 

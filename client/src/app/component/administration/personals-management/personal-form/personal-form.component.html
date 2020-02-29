@@ -69,6 +69,20 @@
     </div>
 
     <div class="form-group row">
+      <label for="email" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="email" name ="email" placeholder="ex : test@gmail.com" [(ngModel)]="personal.email">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="password" class="col-sm-2 col-form-label">Mot de passe</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" id="password" name ="password" placeholder="Mot de passe" [(ngModel)]="personal.password">
+      </div>
+    </div>
+
+    <div class="form-group row">
       <label class="col-sm-2 col-form-label">Roles</label>
 
       <div  class="col-sm-10">

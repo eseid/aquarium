@@ -12,9 +12,7 @@ export class AdminGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.accountService.isAdmin()) {
-      this.router.navigate(['/']);
-    } else {
+    if (!this.accountService.isAdmin()) {
       this.router.navigate(['/account/sign-in']);
     }
     return true;

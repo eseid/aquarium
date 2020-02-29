@@ -4,6 +4,7 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {PoolService} from '../../../../services/pool.service';
 import {EventManagerService} from '../../../../services/event-manager.service';
 import {Species} from '../../../../entities/species.entitie';
+import {SpeciesService} from '../../../../services/species.service';
 
 @Component({
   selector: 'app-delete-confirm',
@@ -16,7 +17,7 @@ export class DeleteConfirmComponent implements OnInit {
 
   constructor(
     public activeModal: NgbActiveModal,
-    private poolService: PoolService,
+    private speciesService: SpeciesService,
     private eventManager: EventManagerService
   ) { }
 
@@ -25,7 +26,7 @@ export class DeleteConfirmComponent implements OnInit {
   }
 
   delete() {
-    this.poolService.deleteById(this.species.id).subscribe(response => {
+    this.speciesService.deleteById(this.species.id).subscribe(response => {
       this.broadcastRefreshProductList(this.species, 'delete');
       this.activeModal.close();
     }, error => console.log(error));

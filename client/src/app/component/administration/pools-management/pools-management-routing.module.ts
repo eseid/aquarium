@@ -22,6 +22,11 @@ const routes: Routes = [
     component: PoolDetailComponent,
     canActivate: [AdminGuard, ResponsableGuard]
   },
+  {
+    path: '',
+    redirectTo: '/pools-management/pools-list',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

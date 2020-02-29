@@ -13,10 +13,6 @@ const routes: Routes = [
     loadChildren: () => import('./component/administration/animals-management/animals-management.module').then(mod => mod.AnimalsManagementModule)
   },
   {
-    path: 'activities-management',
-    loadChildren: () => import('./component/aquarium-management/activity-management/activity-management.module').then(mod => mod.ActivityManagementModule)
-  },
-  {
     path: 'pools-management',
     loadChildren: () => import('./component/administration/pools-management/pools-management.module').then(mod => mod.PoolsManagementModule)
   },

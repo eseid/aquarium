@@ -13,9 +13,7 @@ export class ResponsableGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.accountService.isResponsable()) {
-      this.router.navigate(['/']);
-    } else {
+    if (!this.accountService.isResponsable()) {
       this.router.navigate(['/account/sign-in']);
     }
     return true;

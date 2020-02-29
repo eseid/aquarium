@@ -13,9 +13,7 @@ export class EmployeeGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.accountService.isEmployee()) {
-      this.router.navigate(['/']);
-    } else {
+    if (!this.accountService.isEmployee()) {
       this.router.navigate(['/account/sign-in']);
     }
     return true;

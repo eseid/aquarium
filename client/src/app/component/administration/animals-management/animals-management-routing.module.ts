@@ -14,6 +14,11 @@ const routes: Routes = [
     path: 'animal-details/:id',
     component: AnimalDetailsComponent,
     canActivate: [AdminGuard]
+  },
+  {
+    path: '',
+    redirectTo: '/animals-management/animals-list',
+    pathMatch: 'full'
   }
 ];
 

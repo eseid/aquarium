@@ -9,6 +9,11 @@ const routes: Routes = [
     path: 'species-list',
     component: SpeciesListComponent,
     canActivate: [AdminGuard]
+  },
+  {
+    path: '',
+    redirectTo: '/species-management/species-list',
+    pathMatch: 'full'
   }
 ];
 @NgModule({
