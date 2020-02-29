@@ -63,9 +63,6 @@ public class AnimalServiceImpl implements AnimalService {
 
     @Override
     public Set<Animal> findAllByPoolId(Long poolId) {
-        logger.info("Récupération de la liste des animaux du pool avc  l'ID = " + poolId);
-        Set<Animal> animalsList = this.animalsRepository.findAllByPoolId(poolId);
-        logger.info("La liste de animaux recupérée + " + animalsList);
-        return animalsList;
+        return animalsRepository.findAllByPoolId(poolId);
     }
 }

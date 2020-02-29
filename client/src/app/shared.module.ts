@@ -3,22 +3,27 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {NgbActiveModal, NgbModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {InputFileModule} from 'ngx-input-file';
+import {InputFileComponent, InputFileConfig, InputFileModule, InputFileService} from 'ngx-input-file';
+
+const config: InputFileConfig = {};
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
+    InputFileModule.forRoot(config),
   ],
   exports: [
     FormsModule,
     HttpClientModule,
     NgbModule,
-    InputFileModule
+    InputFileModule,
   ],
   providers: [
     NgbModal,
-    NgbActiveModal
+    NgbActiveModal,
+    InputFileService,
+
   ]
 })
 export class SharedModule { }

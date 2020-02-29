@@ -4,6 +4,8 @@ export class Activity {
     public type?: string,
     public activityDate?: Date,
     public isPublic?: boolean,
-    public descriptionActivity?: string
-  ) {}
+    public descriptionActivity?: string,
+    public picture?: string
+
+) {}
 }

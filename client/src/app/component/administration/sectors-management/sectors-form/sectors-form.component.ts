@@ -13,6 +13,8 @@ export class SectorsFormComponent implements OnInit {
 
   @Input() sector: Sector;
 
+  fileUpload: any
+
   constructor(
     private sectorService: SectorService,
     public activeModal: NgbActiveModal,
@@ -20,10 +22,18 @@ export class SectorsFormComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.fileUpload = [];
+    if (this.sector.id) {
+      this.fileUpload.push({
+        'preview': this.sector.picture
+      });
+    }
   }
 
   save() {
-    console.log(this.sector);
+    if (this.fileUpload.length > 0) {
+      this.sector.picture = this.fileUpload[0].preview;
+    }
     if (this.sector.id) {
       this.sectorService.update(this.sector).subscribe(response => {
         this.broadcastRefreshProductList(response.body, 'update');

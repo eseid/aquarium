@@ -9,7 +9,7 @@ import {AnimalsActivitiesComponent} from './animals-activities/animals-activitie
 
 const routes: Routes = [
   {
-    path: 'pools',
+    path: 'pools/:id',
     component: PoolsComponent
   },
   {
@@ -21,16 +21,12 @@ const routes: Routes = [
     component: AnimalsComponent
   },
   {
-    path: 'sectors',
-    component: SectorComponent
-  },
-  {
     path: 'activities',
     component: ActivitiesComponent
   }
   ,
   {
-    path: 'animals-activities',
+    path: 'animals-activities/:id',
     component: AnimalsActivitiesComponent
   }
 ];

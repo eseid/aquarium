@@ -3,6 +3,9 @@ import {Activity} from '../../../entities/activity.entitie';
 import {ActivityService} from '../../../services/activity.service';
 import {Animal} from '../../../entities/animal.entitie';
 import {AnimalService} from '../../../services/animal.service';
+import {ActivatedRoute} from '@angular/router';
+import {PoolService} from '../../../services/pool.service';
+import {Pool} from '../../../entities/pool.entitie';
 
 @Component({
   selector: 'app-animals-activities',
@@ -13,27 +16,45 @@ export class AnimalsActivitiesComponent implements OnInit {
 
   listOfActivity: Activity[];
   listOfAnimal: Animal[];
+  pool: Pool;
 
   constructor(
     private activityService: ActivityService,
     private animalService: AnimalService,
+    private poolService: PoolService,
+    private activateRoute: ActivatedRoute,
+
   ) { }
 
   ngOnInit() {
-    this.getAllActivities();
-    this.getAllAnimals();
+    this.getAnimalsFromRoute();
+    this.getActivitiesFromRoute();
+
   }
 
-  getAllActivities(){
-    this.activityService.findAll().subscribe(response => {
-      this.listOfActivity = response.body;
+  getAnimalsFromRoute() {
+    this.activateRoute.params.subscribe(param => {
+      this.getAnimalsByPoolId(param.id);
     });
   }
 
-  getAllAnimals(){
-    this.animalService.findAll().subscribe(response => {
-      this.listOfAnimal = response.body;
+  getActivitiesFromRoute() {
+    this.activateRoute.params.subscribe(param => {
+      this.getPoolById(param.id);
     });
   }
+
+  getPoolById(poolId: number) {
+    this.poolService.findById(poolId).subscribe(response => {
+      this.pool = response.body;
+    },
+      error => console.log(error));
+  }
+
+  getAnimalsByPoolId(poolId: number) {
+    this.poolService.findAllAnimalsByPoolId(poolId);
+}
+
+
 
 }

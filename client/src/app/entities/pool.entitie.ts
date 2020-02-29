@@ -12,6 +12,8 @@ export class Pool {
     public sector?: Sector,
     public responsible?: Personal,
     public listOfActivities?: Activity[],
-    public listOfPersonals?: Personal[]
+    public listOfPersonals?: Personal[],
+    public picture?: string
+
   ) {}
 }

@@ -31,7 +31,6 @@ public class PoolController {
 
     @PutMapping
     public ResponseEntity<Pool> update(@RequestBody  Pool pool) {
-        System.out.println("*****************************");
         Pool savedPool = poolService.update(pool);
         return new ResponseEntity<Pool>(savedPool, HttpStatus.OK);
     }
@@ -47,14 +46,15 @@ public class PoolController {
         return new ResponseEntity<Pool>(poolService.findById(id).get(), HttpStatus.OK);
     }
 
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable("id") Long id){
         poolService.deleteById(id);
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
-    @GetMapping("/{id}/animals")
-    public ResponseEntity<Set<Animal>> findAllByPoolId(@PathVariable("id") Long id) {
+    @GetMapping("/animals/{id}")
+    public ResponseEntity<Set<Animal>> findAllAnimalsByPoolId(@PathVariable("id") Long id) {
         return new ResponseEntity<>(this.animalService.findAllByPoolId(id), HttpStatus.OK);
     }
 

@@ -58,4 +58,9 @@ public class PoolServiceImpl implements PoolService {
         poolRepository.deleteById(id);
         logger.info("pool with id " + id + " is deleted with success");
     }
+
+    @Override
+    public Set<Pool> findAllBySectorId(Long sectorId) {
+        return poolRepository.findAllBySectorId(sectorId);
+    }
 }

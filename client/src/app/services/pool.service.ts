@@ -3,6 +3,7 @@ import {SERVER_URL} from '../utils/app.const';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Pool} from '../entities/pool.entitie';
+import {Animal} from '../entities/animal.entitie';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,10 @@ export class PoolService {
 
   public findAll(): Observable<HttpResponse<Pool[]>> {
     return this.http.get<Pool[]>(this.resourceURL, {observe: 'response'});
+  }
+
+  public findAllAnimalsByPoolId(poolId: number): Observable<HttpResponse<Animal[]>> {
+    return this.http.get<Animal[]>(`${this.resourceURL}/animals/${poolId}`, {observe: 'response'});
   }
 
   public save(pool: Pool): Observable<HttpResponse<Pool>> {

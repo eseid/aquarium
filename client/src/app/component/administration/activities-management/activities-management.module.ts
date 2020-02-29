@@ -6,6 +6,7 @@ import { ActivityListComponent } from './activity-list/activity-list.component';
 import {ActivityFormComponent} from './activity-form/activity-form.component';
 import {SharedModule} from '../../../shared.module';
 import { DeleteConfirmComponent } from './delete-confirm/delete-confirm.component';
+import {InputFileService} from 'ngx-input-file';
 
 
 
@@ -16,6 +17,6 @@ import { DeleteConfirmComponent } from './delete-confirm/delete-confirm.componen
     ActivitiesManagementRoutingModule,
     SharedModule
   ],
-  entryComponents: [ActivityFormComponent, DeleteConfirmComponent]
+  entryComponents: [ActivityFormComponent, DeleteConfirmComponent],
 })
 export class ActivitiesManagementModule { }

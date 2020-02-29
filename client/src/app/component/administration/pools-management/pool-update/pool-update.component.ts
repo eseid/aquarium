@@ -30,6 +30,7 @@ export class PoolUpdateComponent implements OnInit {
   personalToAdd: Personal;
   activityToAdd: Activity;
   responsible: Personal;
+  fileUpload: any
 
   constructor(
     private activateRoute: ActivatedRoute,
@@ -49,10 +50,17 @@ export class PoolUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
-        this.getListOfSectors(),
-        this.getListOfPersonnals(),
-        this.getListOfActivities(),
-          this.initPool()
+        this.getListOfSectors();
+        this.getListOfPersonnals();
+        this.getListOfActivities();
+          this.initPool();
+    this.fileUpload = [];
+    if (this.pool.id) {
+      this.fileUpload.push({
+        'preview': this.pool.picture
+      });
+    }
+
   }
 
   initPool(){
@@ -143,6 +151,9 @@ export class PoolUpdateComponent implements OnInit {
   }
 
   save() {
+    if (this.fileUpload.length > 0) {
+      this.pool.picture = this.fileUpload[0].preview;
+    }
     if (this.pool.id) {
       this.poolService.update(this.pool).subscribe(response => {
         this.broadcastRefreshProductList(response.body, 'update');

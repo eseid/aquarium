@@ -3,6 +3,7 @@ import {SERVER_URL} from '../utils/app.const';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Sector} from '../entities/sector.entitie';
+import {Pool} from '../entities/pool.entitie';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,10 @@ export class SectorService {
 
   public findAll(): Observable<HttpResponse<Sector[]>> {
     return this.http.get<Sector[]>(this.resourceURL, {observe: 'response'});
+  }
+
+  public findAllPoolsBySectorId(sectorId: number): Observable<HttpResponse<Pool[]>> {
+    return this.http.get<Pool[]>(`${this.resourceURL}/pools/${sectorId}`, {observe: 'response'});
   }
 
   public save(sector: Sector): Observable<HttpResponse<Sector>> {

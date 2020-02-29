@@ -21,6 +21,7 @@ export class ActivityFormComponent implements OnInit {
 
   @Input() activity: Activity;
   model: NgbDateStruct;
+  fileUpload: any[];
 
   constructor(
     public activeModal: NgbActiveModal,
@@ -30,13 +31,22 @@ export class ActivityFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.fileUpload = [];
+    if (this.activity.id) {
+      this.fileUpload.push({
+        'preview': this.activity.picture
+      });
+    }
   }
 
   isDisabled = (date: NgbDate, current: {month: number}) => date.month !== current.month;
   isWeekend = (date: NgbDate) =>  this.calendar.getWeekday(date) >= 6;
 
   save() {
-    console.log(this.activity);
+    if(this.fileUpload.length > 0){
+      this.activity.picture = this.fileUpload[0].preview;
+    }
+
     if(this.model){
       var date: Date = new Date(this.model.year, this.model.month - 1, this.model.day);
       this.activity.activityDate = date;

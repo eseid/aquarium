@@ -18,6 +18,7 @@ export class AnimalFormComponent implements OnInit {
   @Input() animal: Animal;
   listOfPool: Pool[];
   listOfSpecies: Species[];
+  fileUpload: any;
 
   constructor(
     public activeModal: NgbActiveModal,
@@ -30,6 +31,12 @@ export class AnimalFormComponent implements OnInit {
   ngOnInit() {
     this.getListOfPools();
     this.getListOfSpecies();
+    this.fileUpload = [];
+    if (this.animal.id) {
+      this.fileUpload.push({
+        'preview': this.animal.picture
+      });
+    }
   }
 
   getListOfPools() {
@@ -50,6 +57,9 @@ export class AnimalFormComponent implements OnInit {
   }
 
   save() {
+    if(this.fileUpload.length > 0){
+      this.animal.picture = this.fileUpload[0].preview;
+    }
     if (this.animal.id) {
       this.animalService.update(this.animal).subscribe(response => {
         this.broadcastRefreshProductList(response.body, 'update');

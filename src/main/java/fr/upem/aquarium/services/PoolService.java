@@ -18,4 +18,6 @@ public interface PoolService {
     Optional<Pool> findById(Long id);
 
     void deleteById(Long id);
+
+    Set<Pool> findAllBySectorId(Long sectorId);
 }
