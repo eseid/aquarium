@@ -6,29 +6,31 @@
     </button>
     <div class="navbar-collapse collapse justify-content-stretch" id="navbar" [ngbCollapse]="isNavbarCollapsed">
       <ul class="navbar-nav ml-auto text-uppercase">
-        <li class="nav-item active spacer">
-          <a class="nav-link" [routerLink]="['/']" [routerLinkActive]="['is-active']">
-            <i class="fa fa-home"></i>
-            Home
+        <li class="nav-item active spacer" *ngFor="let link of navBarLinks">
+          <a class="nav-link" [routerLink]="[link.path]" [routerLinkActive]="['is-active']">
+            <i [class]="link.classIcon"></i>
+            {{link.name}}
           </a>
         </li>
-        <li class="nav-item spacer">
-          <a class="nav-link" [routerLink]="['/aquarium/sectors']" [routerLinkActive]="['is-active']">
-            <i class="fa fa-cubes"></i>
-            Nos Secteurs
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item spacer" *ngIf="!accountService.isAuthenticated()">
+          <a class="nav-link pointer" [routerLink]="['/account/sign-in']">
+            <i class="fa fa-user"></i>
+            <span >Connexion</span>
           </a>
         </li>
-        <li class="nav-item spacer">
-          <a class="nav-link" [routerLink]="['/aquarium/activities']" [routerLinkActive]="['is-active']">
-            <i class="fa fa-cubes"></i>
-            Nos Activités
+        <li class="nav-item d-inline-block" ngbDropdown *ngIf="accountService.isAuthenticated()">
+          <a class="nav-link pointer" id="dropdownMenu" ngbDropdownToggle placement="right">
+            <i class="fa fa-user"></i>
+            {{userName}}
           </a>
-        </li>
-        <li class="nav-item spacer">
-          <a class="nav-link" [routerLink]="['/aquarium/animals']" [routerLinkActive]="['is-active']">
-            <i class="fa fa-truck"></i>
-            Nos Pensionnaires
-          </a>
+          <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdownMenu">
+            <a class="dropdown-item pointer" (click)="logout()">
+              <i class="fa fa-sign-in-alt"></i>
+              Déconnexion
+            </a>
+          </div>
         </li>
       </ul>
     </div>

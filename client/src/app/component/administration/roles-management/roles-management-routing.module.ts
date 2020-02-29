@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {RolesListComponent} from './roles-list/roles-list.component';
+import {AdminGuard} from '../../../_guards/admin.guard';
 
 
 const routes: Routes = [
   {
     path: 'roles-list',
-    component: RolesListComponent
+    component: RolesListComponent,
+    canActivate: [AdminGuard]
   }
 ];
 @NgModule({

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,12 +19,14 @@ public class AnimalController {
     private AnimalService animalService;
 
     @PostMapping
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Animal> save(@RequestBody Animal animal) {
         Animal savedAnimal = animalService.save(animal);
         return new ResponseEntity<>(savedAnimal, HttpStatus.CREATED);
     }
 
     @PutMapping
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Animal> update(@RequestBody Animal animal) {
         Animal savedAnimal = animalService.save(animal);
         return new ResponseEntity<>(savedAnimal, HttpStatus.OK);
@@ -43,6 +46,7 @@ public class AnimalController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Void> deleteById(@PathVariable("id") Long id){
         System.out.println("$$$$$$$$$$$$$$$$$$$$ delete id $$$$$$$$$$$$$$$$$$$$");
         animalService.deleteById(id);

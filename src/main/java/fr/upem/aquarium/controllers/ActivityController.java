@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,16 +15,19 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/activities")
 public class ActivityController {
+
     @Autowired
     private ActivityService activityService;
 
     //@RequestBody mappe le corp de httpRequest à un objet
     @PostMapping
+    @PreAuthorize("hasRole('ROLE_RESPONSIBLE')")
     public ResponseEntity<Activity> save(@RequestBody Activity activity) {
         return new ResponseEntity<>(activityService.save(activity), HttpStatus.CREATED);
     }
 
     @PutMapping
+    @PreAuthorize("hasRole('ROLE_RESPONSIBLE')")
     public ResponseEntity<Activity> update(@RequestBody Activity activity) {
         Activity savedActivity = activityService.save(activity);
         return new ResponseEntity<>(savedActivity, HttpStatus.OK);
@@ -42,6 +46,7 @@ public class ActivityController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_RESPONSIBLE')")
     public ResponseEntity<Void> deleteById(@PathVariable("id") Long id){
         System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
         activityService.deleteById(id);

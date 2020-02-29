@@ -29,8 +29,8 @@ export class PoolUpdateComponent implements OnInit {
   activeResponsible: boolean;
   personalToAdd: Personal;
   activityToAdd: Activity;
-  responsible: Personal;
-  fileUpload: any
+  fileUpload: any;
+  states: string[] = ['DIRTY', 'CLEAN'];
 
   constructor(
     private activateRoute: ActivatedRoute,
@@ -40,8 +40,6 @@ export class PoolUpdateComponent implements OnInit {
     private personalService: PersonalService,
     private activityService: ActivityService,
     public activeModal: NgbActiveModal,
-
-
   ) {
     this.activePersonal = false;
     this.activeActivities = false;
@@ -50,10 +48,10 @@ export class PoolUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
-        this.getListOfSectors();
-        this.getListOfPersonnals();
-        this.getListOfActivities();
-          this.initPool();
+    this.getListOfSectors();
+    this.getListOfPersonnals();
+    this.getListOfActivities();
+    this.initPool();
     this.fileUpload = [];
     if (this.pool.id) {
       this.fileUpload.push({
@@ -63,49 +61,49 @@ export class PoolUpdateComponent implements OnInit {
 
   }
 
-  initPool(){
-    if (!this.pool.listOfPersonals){
+  initPool() {
+    if (!this.pool.listOfPersonals) {
       this.pool.listOfPersonals = [];
     }
   }
 
-  activeSelectPersonal(){
-    if(this.activePersonal){
+  activeSelectPersonal() {
+    if (this.activePersonal) {
       this.activePersonal = false;
-    }else{
+    } else {
       this.activePersonal = true;
     }
   }
 
-  activeSelectActivity(){
-    if(this.activeActivities){
+  activeSelectActivity() {
+    if (this.activeActivities) {
       this.activeActivities = false;
-    }else{
+    } else {
       this.activeActivities = true;
     }
   }
 
-  activeSelectResponsible(){
+  activeSelectResponsible() {
     this.activeResponsible = true;
   }
 
-  addPersonal(){
-    if(this.personalToAdd) {
+  addPersonal() {
+    if (this.personalToAdd) {
       if (this.pool.listOfPersonals) {
         this.pool.listOfPersonals.push(this.personalToAdd);
       } else {
-        var personals: Personal[] = [];
+        const personals: Personal[] = [];
         personals.push(this.personalToAdd);
         this.pool.listOfPersonals = personals;
       }
     }
   }
 
-  addActivity(){
-    if(this.pool.listOfActivities){
+  addActivity() {
+    if (this.pool.listOfActivities) {
       this.pool.listOfActivities.push(this.activityToAdd);
     } else {
-      var ativities: Activity[] = [];
+      const ativities: Activity[] = [];
       ativities.push(this.activityToAdd);
       this.pool.listOfActivities = ativities;
     }
@@ -125,7 +123,7 @@ export class PoolUpdateComponent implements OnInit {
     );
   }
 
-  deletePersonal(personal: Personal){
+  deletePersonal(personal: Personal) {
     if (personal.id === this.pool.responsible.id) {
     } else {
       const index: number = this.pool.listOfPersonals.indexOf(personal);
@@ -143,7 +141,7 @@ export class PoolUpdateComponent implements OnInit {
     );
   }
 
-  deleteActivity(activity: Activity){
+  deleteActivity(activity: Activity) {
     const indexActivity: number = this.pool.listOfActivities.indexOf(activity);
     if (indexActivity !== -1) {
       this.pool.listOfActivities.splice(indexActivity, 1);
@@ -173,9 +171,8 @@ export class PoolUpdateComponent implements OnInit {
       'action': action,
       'data': data
     };
-    this.eventManager.broadcast({ name: 'refresh-pools-list', content: content});
+    this.eventManager.broadcast({name: 'refresh-pools-list', content: content});
   }
-
 
 
 }

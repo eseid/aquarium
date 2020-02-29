@@ -1,0 +1,37 @@
+<div class="row login-form">
+  <div class="offset-lg-4 col-lg-4">
+    <div class="text-center">
+      <h4>
+        <i class="fa fa-user" aria-hidden="true"></i>
+        Connexion
+        <br>
+        (espace réservé aux employés de l'aquarium)
+      </h4>
+      <form class="form-signin" role="form" name="loginForm" #loginForm="ngForm">
+        <div class="alert alert-danger" *ngIf="errorMessage">
+          <p>{{errorMessage}}</p>
+        </div>
+        <label for="email" class="sr-only">Email</label>
+        <input type="email" class="form-control" name="email" id="email" [(ngModel)]="userLogin.email"
+               placeholder="Email" autofocus="autofocus">
+
+        <label for="password" class="sr-only">Password</label>
+        <input type="password" class="form-control" name="password" id="password" [(ngModel)]="userLogin.password"
+               placeholder="Password">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="btn btn-lg btn-outline-primary btn-block" (click)="login()">
+                    <span>
+                        <b> Sign in </b> <i class="fa fa-circle-notch fa-spin" *ngIf="loading"></i>
+                    </span>
+        </button>
+        <a href="#" class="password-lost float-left"><b>Mot de passe oublié ?</b></a>
+        <br>
+      </form>
+    </div>
+  </div>
+
+</div>

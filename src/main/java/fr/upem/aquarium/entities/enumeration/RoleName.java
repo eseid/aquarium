@@ -1,7 +1,7 @@
 package fr.upem.aquarium.entities.enumeration;
 
 public enum RoleName {
-    EMPLOYEE,
-    RESPONSIBLE,
-    MANAGER
+    ROLE_EMPLOYEE,
+    ROLE_RESPONSIBLE,
+    ROLE_ADMIN
 }

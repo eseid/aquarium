@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,11 +26,13 @@ public class SectorController {
 
     //@RequestBody mappe le corp de httpRequest à un objet
     @PostMapping
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Sector> save(@RequestBody Sector sector) {
         return new ResponseEntity<>(sectorService.save(sector), HttpStatus.CREATED);
     }
 
     @PutMapping
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Sector> update(@RequestBody Sector sector) {
         return new ResponseEntity<>(sectorService.update(sector), HttpStatus.CREATED);
     }
@@ -51,6 +54,7 @@ public class SectorController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Void> deleteById(@PathVariable("id") Long id){
         this.sectorService.deleteById(id);
         return new ResponseEntity<Void>(HttpStatus.OK);

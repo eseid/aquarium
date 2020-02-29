@@ -41,6 +41,11 @@ const routes: Routes = [
     loadChildren: () => import('./component/aquarium-display/aquarium-display.module').then(mod => mod.AquariumDisplayModule)
   },
   {
+    path: 'account',
+    loadChildren: () => import('./component/account/account.module').then(mod => mod.AccountModule)
+
+  },
+  {
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'

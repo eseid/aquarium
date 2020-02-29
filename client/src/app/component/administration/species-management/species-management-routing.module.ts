@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {SectorsListComponent} from '../sectors-management/sectors-list/sectors-list.component';
-import {SectorsDetailsComponent} from '../sectors-management/sectors-details/sectors-details.component';
 import {SpeciesListComponent} from './species-list/species-list.component';
+import {AdminGuard} from '../../../_guards/admin.guard';
 
 
 const routes: Routes = [
   {
     path: 'species-list',
-    component: SpeciesListComponent
+    component: SpeciesListComponent,
+    canActivate: [AdminGuard]
+  },
+  {
+    path: '',
+    redirectTo: '/species-management/species-list',
+    pathMatch: 'full'
   }
 ];
 @NgModule({

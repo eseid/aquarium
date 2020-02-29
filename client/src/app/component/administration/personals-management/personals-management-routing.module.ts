@@ -3,16 +3,25 @@ import { Routes, RouterModule } from '@angular/router';
 import {PersonalsListComponent} from './personals-list/personals-list.component';
 import {PoolDetailComponent} from '../pools-management/pool-detail/pool-detail.component';
 import {PersonalDetailComponent} from './personal-detail/personal-detail.component';
+import {AnimalsListComponent} from '../animals-management/animals-list/animals-list.component';
+import {AdminGuard} from '../../../_guards/admin.guard';
 
 const routes: Routes = [
     {
         path: 'personals-list',
-        component: PersonalsListComponent
+        component: PersonalsListComponent,
+      canActivate: [AdminGuard]
     },
   {
     path: 'personal-details/:id',
-    component: PersonalDetailComponent
+    component: PersonalDetailComponent,
+    canActivate: [AdminGuard]
   },
+  {
+    path: '',
+    redirectTo: '/personals-management/personals-list',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

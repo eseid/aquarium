@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,11 +26,13 @@ public class PoolController {
 
     //@RequestBody mappe le corp de httpRequest à un objet
     @PostMapping
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Pool> save(@RequestBody Pool pool) {
         return new ResponseEntity<>(poolService.save(pool), HttpStatus.CREATED);
     }
 
     @PutMapping
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Pool> update(@RequestBody  Pool pool) {
         Pool savedPool = poolService.update(pool);
         return new ResponseEntity<Pool>(savedPool, HttpStatus.OK);
@@ -48,6 +51,7 @@ public class PoolController {
 
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Void> deleteById(@PathVariable("id") Long id){
         poolService.deleteById(id);
         return new ResponseEntity<Void>(HttpStatus.OK);
