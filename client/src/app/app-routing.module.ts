@@ -13,10 +13,6 @@ const routes: Routes = [
     loadChildren: () => import('./component/administration/animals-management/animals-management.module').then(mod => mod.AnimalsManagementModule)
   },
   {
-    path: 'activities-management',
-    loadChildren: () => import('./component/aquarium-management/activity-management/activity-management.module').then(mod => mod.ActivityManagementModule)
-  },
-  {
     path: 'pools-management',
     loadChildren: () => import('./component/administration/pools-management/pools-management.module').then(mod => mod.PoolsManagementModule)
   },
@@ -39,6 +35,10 @@ const routes: Routes = [
   {
     path: 'personals-management',
     loadChildren: () => import('./component/administration/personals-management/personals-management.module').then(mod => mod.PersonalsManagementModule)
+  },
+  {
+    path: 'aquarium',
+    loadChildren: () => import('./component/aquarium-display/aquarium-display.module').then(mod => mod.AquariumDisplayModule)
   },
   {
     path: '',

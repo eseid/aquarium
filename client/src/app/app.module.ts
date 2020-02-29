@@ -7,6 +7,7 @@ import { HomeComponent } from './component/layout/home/home.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {SharedModule} from './shared.module';
 import {MainNavComponent} from './component/layout/main-nav/main-nav.component';
+import { FooterComponent } from './component/layout/footer/footer.component';
 
 
 
@@ -14,7 +15,8 @@ import {MainNavComponent} from './component/layout/main-nav/main-nav.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    MainNavComponent
+    MainNavComponent,
+    FooterComponent
   ],
     imports: [
         BrowserModule,
