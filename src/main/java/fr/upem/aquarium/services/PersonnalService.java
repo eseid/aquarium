@@ -16,4 +16,6 @@ public interface PersonnalService {
     Optional<Personnal> findById(Long id);
 
     void deleteById(Long id);
+
+    Personnal findByEmail(String email);
 }

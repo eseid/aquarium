@@ -63,10 +63,11 @@ public class AquariumApplication implements CommandLineRunner {
         Set<Role> roles = new HashSet<>();
         roles.add(role);
         Personnal eseid = new Personnal("Eseid", "BENMAMMAR", "homme", "Noisy",
-                Instant.parse("1993-01-01T10:12:35Z"), "123345637890", roles);
+                Instant.parse("1993-01-01T10:12:35Z"), "123345637890",
+                "eseidbenmamer@gmail.com", "eseid@06",  roles);
 
         Personnal john = new Personnal("john", "john", "homme", "Noisy",
-                Instant.parse("1993-01-01T10:12:35Z"), "123345617890", roles);
+                Instant.parse("1993-01-01T10:12:35Z"), "123345617890","john@outlook.fr" , "John@2020" , roles);
         personnalService.save(john);
         personnalService.save(eseid);
 

@@ -1,5 +1,7 @@
 package fr.upem.aquarium.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
@@ -27,6 +29,11 @@ public class Personnal implements Serializable {
     private Instant birthDay;
     @Column(name = "social_security_number")
     private String socialSecurityNumber;
+    @Column(name = "email")
+    private String email;
+    @Column(name = "password")
+    @JsonIgnore
+    private String password;
 
     @ManyToMany
     @JoinTable(
@@ -34,7 +41,6 @@ public class Personnal implements Serializable {
             joinColumns = @JoinColumn(name = "personnel_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> listOfRoles =  new HashSet<>();
-
 
     @ManyToMany
     @JoinTable(
@@ -53,13 +59,17 @@ public class Personnal implements Serializable {
     public Personnal() {
     }
 
-    public Personnal(String firstName, String lastName, String sex, String address, Instant birthDay, String socialSecurityNumber, Set<Role> listOfRoles) {
+    public Personnal(String firstName, String lastName, String sex, String address,
+                     Instant birthDay, String socialSecurityNumber, String email,
+                     String password, Set<Role> listOfRoles) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.sex = sex;
         this.address = address;
         this.birthDay = birthDay;
         this.socialSecurityNumber = socialSecurityNumber;
+        this.email = email;
+        this.password = password;
         this.listOfRoles = listOfRoles;
     }
 
@@ -93,6 +103,22 @@ public class Personnal implements Serializable {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getAddress() {
@@ -166,9 +192,12 @@ public class Personnal implements Serializable {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", sex='" + sex + '\'' +
                 ", address='" + address + '\'' +
                 ", birthDay=" + birthDay +
                 ", socialSecurityNumber='" + socialSecurityNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

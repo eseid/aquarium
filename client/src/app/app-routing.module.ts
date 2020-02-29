@@ -41,6 +41,10 @@ const routes: Routes = [
     loadChildren: () => import('./component/administration/personals-management/personals-management.module').then(mod => mod.PersonalsManagementModule)
   },
   {
+    path: 'account',
+    loadChildren: () => import('./component/account/account.module').then(mod => mod.AccountModule)
+  },
+  {
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'

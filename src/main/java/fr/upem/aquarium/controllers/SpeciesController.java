@@ -5,6 +5,7 @@ import fr.upem.aquarium.services.SpeciesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,11 +19,13 @@ public class SpeciesController {
 
     //@RequestBody mappe le corp de httpRequest à un objet
     @PostMapping
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Species> save(@RequestBody Species species) {
         return new ResponseEntity<>(speciesService.save(species), HttpStatus.CREATED);
     }
 
     @PutMapping
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Species> update(@RequestBody Species species) {
         return new ResponseEntity<>(speciesService.update(species), HttpStatus.CREATED);
     }
@@ -39,6 +42,7 @@ public class SpeciesController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Void> deleteById(@PathVariable("id") Long id){
         this.speciesService.deleteById(id);
         return new ResponseEntity<Void>(HttpStatus.OK);
