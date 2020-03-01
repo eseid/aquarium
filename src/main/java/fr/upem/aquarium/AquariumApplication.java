@@ -10,9 +10,8 @@ import javax.annotation.PostConstruct;
 import fr.upem.aquarium.dao.AnimalsRepository;
 import fr.upem.aquarium.entities.*;
 import fr.upem.aquarium.entities.enumeration.RoleName;
-import fr.upem.aquarium.services.ActivityService;
-import fr.upem.aquarium.services.PersonnalService;
-import fr.upem.aquarium.services.RoleService;
+import fr.upem.aquarium.services.*;
+import fr.upem.aquarium.services.impl.InitDatabaseImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -24,7 +23,6 @@ import fr.upem.aquarium.dao.PoolRepository;
 import fr.upem.aquarium.dao.SectorRepository;
 import fr.upem.aquarium.dao.SpeciesRepository;
 import fr.upem.aquarium.entities.enumeration.State;
-import fr.upem.aquarium.services.AnimalService;
 
 @SpringBootApplication
 @EntityScan(basePackageClasses = { AquariumApplication.class, Jsr310JpaConverters.class })
@@ -52,12 +50,19 @@ public class AquariumApplication implements CommandLineRunner {
     @Autowired
     private PersonnalService personnalService;
 
+    @Autowired
+    InitDatabase initDatabase;
+
+
     public static void main(String[] args) {
         SpringApplication.run(AquariumApplication.class, args);
     }
 
     @Override
     public void run(String... args) throws Exception {
+        initDatabase.initDabase();
+
+        /*
         Role role = new Role(RoleName.ROLE_EMPLOYEE);
         roleService.save(role);
         Set<Role> roles = new HashSet<>();
@@ -91,8 +96,8 @@ public class AquariumApplication implements CommandLineRunner {
         personnalService.save(admin);
         personnalService.save(responsable);
 
-        Sector sector = this.sectorRepository.save(new Sector("Atlantique","secteur_1"));
-        Activity activity = activityService.save(new Activity("nourrissage", Instant.parse("1993-01-01T10:12:35Z"), true, "nourrir les tortues"));
+            Sector sector = this.sectorRepository.save(new Sector("MEDETERRANEE", "La méditerranée", ));
+            Activity activity = activityService.save(new Activity("nourrissage", Instant.parse("1993-01-01T10:12:35Z"), true, "nourrir les tortues"));
 
         Pool pool = new Pool("pool_1", 5, 34.5, State.CLEAN, sector, eseid);
         pool.getListOfActivities().add(activity);
@@ -132,7 +137,7 @@ public class AquariumApplication implements CommandLineRunner {
         Set<Animal> animalsList = this.animalsRepository.findAllByPoolId(pool.getId());
         animalsList.forEach(animal1 -> System.out.println(animal1));
 
-
+    */
 
 
     }

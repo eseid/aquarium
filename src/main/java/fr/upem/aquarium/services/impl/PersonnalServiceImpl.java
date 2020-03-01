@@ -4,6 +4,7 @@ import fr.upem.aquarium.dao.PersonnalRepository;
 import fr.upem.aquarium.entities.Personnal;
 import fr.upem.aquarium.exceptions.ExistsException;
 import fr.upem.aquarium.exceptions.NotFoundException;
+import fr.upem.aquarium.services.InitDatabase;
 import fr.upem.aquarium.services.PersonnalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,6 +24,7 @@ public class PersonnalServiceImpl implements PersonnalService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
 
     @Override
     public Personnal save(Personnal personnal) {

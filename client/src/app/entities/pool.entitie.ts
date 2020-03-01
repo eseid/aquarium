@@ -13,7 +13,8 @@ export class Pool {
     public responsible?: Personal,
     public listOfActivities?: Activity[],
     public listOfPersonals?: Personal[],
-    public picture?: string
+    public picture?: any,
+    public description?: any
 
   ) {}
 }

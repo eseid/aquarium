@@ -14,7 +14,6 @@ import {Pool} from '../../../entities/pool.entitie';
 })
 export class AnimalsActivitiesComponent implements OnInit {
 
-  listOfActivity: Activity[];
   listOfAnimal: Animal[];
   pool: Pool;
 
@@ -52,7 +51,9 @@ export class AnimalsActivitiesComponent implements OnInit {
   }
 
   getAnimalsByPoolId(poolId: number) {
-    this.poolService.findAllAnimalsByPoolId(poolId);
+    this.poolService.findAllAnimalsByPoolId(poolId).subscribe(response =>{
+      this.listOfAnimal = response.body;
+    });
 }
 
 

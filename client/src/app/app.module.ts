@@ -12,6 +12,7 @@ import {JwtInterceptor} from './_helpers/jwt-interceptor';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,8 @@ import {JwtInterceptor} from './_helpers/jwt-interceptor';
     imports: [
         BrowserModule,
         AppRoutingModule,
-        SharedModule
+        SharedModule,
+
     ],
   providers: [
     {

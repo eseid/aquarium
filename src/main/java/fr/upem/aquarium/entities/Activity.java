@@ -22,17 +22,20 @@ public class Activity {
     private boolean isPublic;
     @Column(name = "description_activity")
     private String descriptionActivity;
+    @Column(columnDefinition = "TEXT")
+    private String picture;
 
 
 
     public Activity() {
     }
 
-    public Activity(String type, Instant activityDate, boolean isPublic, String descriptionActivity) {
+    public Activity(String type, Instant activityDate, boolean isPublic, String descriptionActivity, String picture) {
         this.type = type;
         this.activityDate = activityDate;
         this.isPublic = isPublic;
         this.descriptionActivity = descriptionActivity;
+        this.picture = picture;
     }
 
 
@@ -75,6 +78,14 @@ public class Activity {
 
     public void setDescriptionActivity(String descriptionActivity) {
         this.descriptionActivity = descriptionActivity;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     @Override

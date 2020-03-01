@@ -23,6 +23,10 @@ public class Pool {
     private double volume;
     @Enumerated(EnumType.ORDINAL)
     private State state;
+    @Column(columnDefinition = "TEXT")
+    private String picture;
+    @Column(columnDefinition = "TEXT")
+    private String description;
 
     @ManyToOne
     @JoinColumn(name = "sector_id")
@@ -49,13 +53,15 @@ public class Pool {
     public Pool() {
     }
 
-    public Pool(String name, int capacity, double volume, State state, Sector sector, Personnal responsible) {
+    public Pool(String name, int capacity, double volume, State state, Sector sector, Personnal responsible, String picture, String description) {
         this.name = name;
         this.capacity = capacity;
         this.volume = volume;
         this.state = state;
         this.sector = sector;
         this.responsible = responsible;
+        this.picture = picture;
+        this.description = description;
     }
 
 
@@ -97,6 +103,22 @@ public class Pool {
 
     public void setState(State state) {
         this.state = state;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Sector getSector() {

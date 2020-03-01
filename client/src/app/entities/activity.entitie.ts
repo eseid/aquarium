@@ -5,7 +5,7 @@ export class Activity {
     public activityDate?: Date,
     public isPublic?: boolean,
     public descriptionActivity?: string,
-    public picture?: string
+    public picture?: any
 
 ) {}
 }

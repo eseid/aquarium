@@ -24,8 +24,8 @@ public class Animal implements Serializable {
     private Instant checkinDate;
     @Column(name = "checkout_date")
     private Instant checkoutDate;
-    @Column(name="path_image")
-    private String pathImage;
+    @Column(columnDefinition = "TEXT")
+    private String picture;
 
     @ManyToOne
     @JoinColumn(name = "pool_id")
@@ -40,7 +40,7 @@ public class Animal implements Serializable {
 
 
 
-    public Animal(String name, String sexe, String destinctiveSign, Instant checkinDate, Instant checkoutDate, Species species, Pool pool, String pathImage) {
+    public Animal(String name, String sexe, String destinctiveSign, Instant checkinDate, Instant checkoutDate, Species species, Pool pool, String picture) {
         this.name = name;
         this.sexe = sexe;
         this.destinctiveSign = destinctiveSign;
@@ -48,7 +48,7 @@ public class Animal implements Serializable {
         this.checkoutDate = checkoutDate;
         this.species = species;
         this.pool = pool;
-        this.pathImage = pathImage;
+        this.picture = picture;
     }
 
     public Long getId() {
@@ -115,12 +115,12 @@ public class Animal implements Serializable {
         this.species = species;
     }
 
-    public String getPathImage() {
-        return pathImage;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setPathImage(String pathImage) {
-        this.pathImage = pathImage;
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     @Override

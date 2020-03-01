@@ -2,24 +2,20 @@
   <h3  class="center">Nos bassins </h3>
 </div>
 <div class="row">
-  <div class="card col-lg-3 card-spacer" style="width: 18rem;" *ngFor="let pool of listOfPool">
+  <div class="card col-lg-4 card-spacer" style="width: 18rem;" *ngFor="let pool of listOfPool">
     <img class="card-img-top" src = "{{pool.picture}}" alt="Card image cap">
 
     <div class="card-body">
       <h5 class="card-title">{{pool?.name}}</h5>
 
+      <p>Capacité : {{pool?.capacity}}</p>
+      <p>Volume : {{pool?.volume}}</p>
+      <p> {{pool?.description}}</p>
     </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Secteur : {{pool?.sector.name}}</li>
-      <li class="list-group-item">Capacité : {{pool?.capacity}}</li>
-      <li class="list-group-item">Volume : {{pool?.volume}} m3</li>
-    </ul>
-
-    <div class="card-body">
-      <a class="btn btn-primary" [routerLink]="['/aquarium/animals-activities/', pool.id]" [routerLinkActive]="['is-active']">
-        <i class="fa fa-plus"> </i> Détails
-      </a>
-    </div>
+    <a class="btn btn-primary" [routerLink]="['/aquarium/animals-activities/', pool.id]" [routerLinkActive]="['is-active']">
+      <i class="fa fa-plus"> </i> Détails
+    </a>
 
   </div>
+
 </div>

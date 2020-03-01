@@ -3,7 +3,7 @@ export class Sector {
     public id?: number,
     public name?: string,
     public location?: string,
-    public picture?: string
+    public picture?: any
 
   ) {}
 }

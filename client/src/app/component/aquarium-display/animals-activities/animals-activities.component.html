@@ -1,54 +1,43 @@
 <div>
+  <h1  class="center">{{pool.name}}</h1>
+</div>
+<br>
+<br>
+<div>
   <h3  class="center">Nos pensionnaires </h3>
 </div>
+<br>
 <div class="row">
-  <div class="card col-lg-3 card-spacer" style="width: 18rem;" *ngFor="let animal of listOfAnimal">
+  <div class="card col-lg-4 card-spacer" style="width: 18rem;" *ngFor="let animal of listOfAnimal">
     <img class="card-img-top" src = "{{animal.picture}}" alt="Card image cap">
-
     <div class="card-body">
       <h5 class="card-title">{{animal?.name}}</h5>
+      <br>
+      <br>
 
+      <p><i>Espèce : </i>       {{animal?.species.name}}
+      <br><i>Sexe : </i>      {{animal?.sexe}}
+      <br><i>Régime : </i>      {{animal?.species.diet}}
+      <br><i>Espérance de vie : </i>      {{animal?.species.lifeExpectancy}}
+      <br><i>L'espèce est-elle menacée ? :      </i> {{animal?.species.isThreat}}
+      <br><i>degré de menace : </i>      {{animal?.species.threatLevel}} /5
+      <br><i>Signe destinctif : </i>       {{animal?.destinctiveSign}}
+      </p>
     </div>
-    <tr>
-      <td>Espèce : {{animal?.species.name}}</td>
-    </tr>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">
-        <tr>
-          <td>Régime : {{animal?.species.diet}}</td>
-        </tr>
-        <tr>
-          <td>Espérance de vie : {{animal?.species.lifeExpectancy}}</td>
-        </tr>
-        <tr>
-          <td>L'espèce est-elle menacée ? : {{animal?.species.isThreat}}</td>
-        </tr>
-        <tr>
-          <td>Espèce : {{animal?.species.threatLevel}} /5</td>
-        </tr>
-      </li>
-    </ul>
-
-
-    <tr>
-      <td>Sexe : {{animal?.sexe}}</td>
-    </tr>
-    <tr>
-      <td>Signe destinctif : {{animal?.destinctiveSign}}</td>
-    </tr>
-
 
 
   </div>
 </div>
 
-
+<br>
+<br>
 
 <div>
   <h3  class="center">Nos Activities </h3>
 </div>
+<br>
 <div class="row">
-  <div class="card col-lg-3 card-spacer" style="width: 18rem;" *ngFor="let activity of pool?.listOfActivities">
+  <div class="card col-lg-4 card-spacer" style="width: 18rem;" *ngFor="let activity of pool?.listOfActivities">
     <img class="card-img-top" src = "{{activity.picture}}" alt="Card image cap">
 
     <div class="card-body">

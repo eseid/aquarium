@@ -22,6 +22,7 @@ public class RoleServiceImpl implements RoleService {
     public Role save(Role role) {
         //if(roleRepository.existsByRoleName(role.getRoleName()))
           //  throw new ExistsException( "The role with name : " + role.getRoleName()+ " exist !");
+        System.out.println("ééééééééééééééééééééééééééé");
         return roleRepository.save(role);
     }
 

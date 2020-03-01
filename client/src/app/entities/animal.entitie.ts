@@ -11,6 +11,6 @@ export class Animal {
     public checkoutDate?: Date,
     public pool?: Pool,
     public species?: Species,
-    public picture?: string
+    public picture?: any
   ) {}
 }

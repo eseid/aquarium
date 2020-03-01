@@ -17,13 +17,16 @@ public class Sector {
     private String name;
     @Column(name = "location")
     private String location;
+    @Column(columnDefinition = "TEXT")
+    private String picture;
 
     public Sector() {
     }
 
-    public Sector(String name, String location) {
+    public Sector(String name, String location, String picture) {
         this.name = name;
         this.location = location;
+        this.picture = picture;
     }
 
     public Long getId() {
@@ -48,6 +51,14 @@ public class Sector {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     @Override
