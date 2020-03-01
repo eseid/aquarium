@@ -19,17 +19,17 @@ export const VISITOR_MENU: Nav[] = [
   {
     name: 'Nos secteurs',
     path: '/aquarium/sectors',
-    classIcon: 'fa fa-globe-africa'
+    classIcon: 'fas fa-map-marked'
   },
   {
     name: 'Nos Activités',
     path: '/aquarium/activities',
-    classIcon: 'fa fa-tasks'
+    classIcon: 'fas fa-calendar-alt'
   },
   {
     name: 'Nos Pensionnaires',
     path: '/aquarium/animals',
-    classIcon: 'fa fa-fish'
+    classIcon: 'fas fa-fish'
   }
 ];
 
@@ -42,7 +42,7 @@ export const RESPONSABLE_MENU: Nav[] = [
   {
     name: 'Activités',
     path: '/activities-management',
-    classIcon: 'fa fa-tasks'
+    classIcon: 'fas fa-calendar-alt'
   }
 ];
 export const EMPLOYEE_MENU: Nav[] = [
@@ -67,22 +67,22 @@ export const ADMIN_MENU: Nav[] = [
   {
     name: 'Bassins',
     path: '/pools-management',
-    classIcon: 'fa fa-swimming-pool'
+    classIcon: 'fas fa-swimming-pool'
   },
   {
     name: 'Pentionnaires',
     path: '/animals-management',
-    classIcon: 'fa fa fa-fish'
+    classIcon: 'fas fa-fish'
   },
   {
     name: 'Secteurs',
     path: '/sectors-management',
-    classIcon: 'fa fa-globe-africa'
+    classIcon: 'fas fa-globe-africa'
   },
   {
     name: 'Espèces',
     path: '/species-management',
-    classIcon: 'fa fa-stream'
+    classIcon: 'fas fa-stream'
   },
   {
     name: 'Personels',

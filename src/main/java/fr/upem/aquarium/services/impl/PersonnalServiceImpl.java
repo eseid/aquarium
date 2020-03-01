@@ -39,6 +39,7 @@ public class PersonnalServiceImpl implements PersonnalService {
         if(!personnalRepository.existsById(personnal.getId())) {
             throw new NotFoundException("The personal with id " + personnal.getId() + " not exist !");
         }
+        personnal.setPassword(passwordEncoder.encode(personnal.getPassword()));
         return personnalRepository.save(personnal);
     }
 

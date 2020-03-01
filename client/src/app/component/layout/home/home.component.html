@@ -1,6 +1,6 @@
 <header>
   <div class="overlay"></div>
-  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+  <video autoplay="autoplay" loop="loop" muted="muted" playsinline="playsinline">
     <source src="assets/video/aquarium.mp4" type="video/mp4">
   </video>
   <div class="container h-100">
@@ -15,112 +15,94 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-<div class="row">
-
-  <div class="card mb-12" style="max-width: 540px;">
-        <div class="row">
-          <div class="col-md-4">
-            <img src="..." class="card-img" alt="...">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-          </div>
-        </div>
+<mat-card class="mat-parent">
+  <div class="row">
+  <div class="card col-lg-6 card-spacer" style="width: 18rem;">
+  <img alt="Card image cap" class="card-img-top" src = "{{listOfActivity[0]?.picture}}">
+  <div class="card-body">
+    <h3 class="card-title">{{listOfActivity[0]?.type}}</h3>
+    <h6>Date : {{listOfActivity[0]?.activityDate}}
+    <br>{{listOfActivity[0]?.descriptionActivity}}
+    </h6>
   </div>
 </div>
 
-
-<section class="my-5">
-  <div class="container">
-
-    <div class="row">
-      <div class="col-md-8 mx-auto">
-        <p>The HTML5 video element uses an mp4 video as a source. Change the source video to add in your own background!
-          The header text is vertically centered using flex utilities that are build into Bootstrap 4.</p>
-        <p>The overlay color can be changed by changing the <code>background-color</code> of the <code>.overlay</code>
-          class in the CSS.</p>
-        <p>Set the mobile fallback image in the CSS by changing the background image of the header element within the
-          media query at the bottom of the CSS snippet.</p>
-        <p class="mb-0">
-          Created by <a href="https://startbootstrap.com">Start Bootstrap</a>
-        </p>
-      </div>
+  <div class="card col-lg-6 card-spacer" style="width: 18rem;">
+    <img alt="Card image cap" class="card-img-top" src = "{{listOfActivity[1]?.picture}}">
+    <div class="card-body">
+      <h3 class="card-title">{{listOfActivity[1]?.type}}</h3>
+      <h6>Date : {{listOfActivity[1]?.activityDate}}
+        <br>{{listOfActivity[1]?.descriptionActivity}}
+      </h6>
     </div>
   </div>
-</section>
+  </div>
+<div>
+  <a class= "btn btn-block btn-light" [routerLink]="['/aquarium/activities/']" [routerLinkActive]="['is-active']">
+    <i class="fa fa-angle-double-right"> </i> Voir toutes nos activités
+  </a>
+</div>
+</mat-card>
 
-<ngb-carousel *ngIf="images">
+
+<ngb-carousel *ngIf="listOfAnimals">
   <ng-template ngbSlide>
     <div class="picsum-img-wrapper">
-      <img class="center" [src]="images[0]" alt="Random first slide">
+      <img [src]="listOfAnimals[0]?.picture" alt="Random first slide" class="center">
     </div>
     <div class="carousel-caption">
-      <h3>First slide label</h3>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      <h3></h3>
+       <a  [routerLink]="['/aquarium/animals/']" [routerLinkActive]="['is-active']"><p>
+        Voir plus de poissons
+       </p> </a>
     </div>
   </ng-template>
   <ng-template ngbSlide>
     <div class="picsum-img-wrapper">
-      <img class="center" [src]="images[1]" alt="Random second slide">
+      <img [src]="listOfAnimals[6]?.picture" alt="Random second slide" class="center">
     </div>
     <div class="carousel-caption">
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <h3></h3>
+      <a  [routerLink]="['/aquarium/animals/']" [routerLinkActive]="['is-active']"><p>
+        Voir plus de poissons
+      </p> </a>
     </div>
   </ng-template>
   <ng-template ngbSlide>
     <div class="picsum-img-wrapper">
-      <img class="center" [src]="images[2]" alt="Random third slide">
+      <img [src]="listOfAnimals[4]?.picture" alt="Random third slide" class="center">
     </div>
     <div class="carousel-caption">
-      <h3>Third slide label</h3>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      <h3></h3>
+      <a  [routerLink]="['/aquarium/animals/']" [routerLinkActive]="['is-active']"><p>
+        Voir plus de poissons
+      </p> </a>
     </div>
   </ng-template>
+
 </ngb-carousel>
 
 
-<div class="container2">
+
+<mat-card class="mat-parent">
   <div class="row">
-    <div class="col">
-      <p>sdfkgbksbkgdsndmkfngknbdfsjbln dldf,b qsbdq,sb,bcqs,bqcs,bqcsnbc knqskn</p>
-    </div>
-    <div class="col">
-      <div>
-        <img class="center" alt="logo" src="assets/img/dauphin.jpg"/>
+    <div class="card col-lg-6 card-spacer" style="width: 18rem;">
+      <img alt="Card image cap" class="card-img-top" src = "{{listOfSectors[0]?.picture}}">
+      <div class="card-body">
+        <h3 class="card-title">{{listOfSectors[0]?.name}}</h3>
       </div>
     </div>
 
-  </div>
-</div>
-
-
-<div class="container2">
-  <div class="row">
-
-    <div class="col">
-      <div>
-        <img class="center" alt="logo" src="assets/img/dauphin.jpg"/>
+    <div class="card col-lg-6 card-spacer" style="width: 18rem;">
+      <img alt="Card image cap" class="card-img-top" src = "{{listOfSectors[1]?.picture}}">
+      <div class="card-body">
+        <h3 class="card-title">{{listOfSectors[1]?.name}}</h3>
       </div>
     </div>
-
-    <div class="col">
-      <p>sdfkgbksbkgdsndmkfngknbdfsjbln dldf,b qsbdq,sb,bcqs,bqcs,bqcsnbc knqskn</p>
-    </div>
-
   </div>
-</div>
+  <div>
+    <a class= "btn btn-block btn-light" [routerLink]="['/aquarium/sectors/']" [routerLinkActive]="['is-active']">
+      <i class="fa fa-angle-double-right"> </i> Voir tout nos secteurs
+    </a>
+  </div>
+</mat-card>

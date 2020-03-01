@@ -9,6 +9,7 @@ import { FooterComponent } from './component/layout/footer/footer.component';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {HttpErrorInterceptor} from './_helpers/http-error-interceptor';
 import {JwtInterceptor} from './_helpers/jwt-interceptor';
+import { MatCardModule } from '@angular/material';
 
 
 
@@ -24,6 +25,7 @@ import {JwtInterceptor} from './_helpers/jwt-interceptor';
         BrowserModule,
         AppRoutingModule,
         SharedModule,
+        MatCardModule
 
     ],
   providers: [
