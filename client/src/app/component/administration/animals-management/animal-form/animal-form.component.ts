@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbActiveModal, NgbCalendar, NgbDate, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import {AnimalService} from '../../../../services/animal.service';
 import {Animal} from '../../../../entities/animal.entitie';
 import {Pool} from '../../../../entities/pool.entitie';
@@ -19,13 +19,18 @@ export class AnimalFormComponent implements OnInit {
   listOfPool: Pool[];
   listOfSpecies: Species[];
   fileUpload: any;
+  dateIn: NgbDateStruct;
+  dateOut: NgbDateStruct;
+
 
   constructor(
     public activeModal: NgbActiveModal,
     private poolService: PoolService,
     private specieisService: SpeciesService,
     private animalService: AnimalService,
-    private eventManager: EventManagerService
+    private eventManager: EventManagerService,
+    private calendar: NgbCalendar
+
   ) { }
 
   ngOnInit() {
@@ -38,6 +43,12 @@ export class AnimalFormComponent implements OnInit {
       });
     }
   }
+
+  isDisabled = (date: NgbDate, current: {month: number}) => date.month !== current.month;
+  isWeekend = (date: NgbDate) =>  this.calendar.getWeekday(date) >= 6;
+
+  isDisabled1 = (date: NgbDate, current: {month: number}) => date.month !== current.month;
+  isWeekend1 = (date: NgbDate) =>  this.calendar.getWeekday(date) >= 6;
 
   getListOfPools() {
     this.poolService.findAll().subscribe(
@@ -57,6 +68,12 @@ export class AnimalFormComponent implements OnInit {
   }
 
   save() {
+    if(this.dateIn) {
+      this.animal.checkinDate = new Date(this.dateIn.year, this.dateIn.month - 1, this.dateIn.day);
+    }
+    if(this.dateOut) {
+      this.animal.checkoutDate = new Date(this.dateOut.year, this.dateOut.month - 1, this.dateOut.day);
+    }
     if(this.fileUpload.length > 0){
       this.animal.picture = this.fileUpload[0].preview;
     }

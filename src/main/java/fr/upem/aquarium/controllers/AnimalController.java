@@ -28,7 +28,7 @@ public class AnimalController {
     @PutMapping
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Animal> update(@RequestBody Animal animal) {
-        Animal savedAnimal = animalService.save(animal);
+        Animal savedAnimal = animalService.update(animal);
         return new ResponseEntity<>(savedAnimal, HttpStatus.OK);
     }
 

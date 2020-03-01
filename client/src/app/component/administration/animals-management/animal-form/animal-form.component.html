@@ -31,17 +31,50 @@
     </div>
 
     <div class="form-group row">
-      <label for="checkinDate" class="col-sm-2 col-form-label">Date d'entrée</label>
+      <label for="Date" class="col-sm-2 col-form-label">Date d'entrée</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="checkinDate"  name="checkinDate" placeholder="dd/MM/yyyy" [(ngModel)]="animal.checkinDate">
+        <form class="form-inline">
+          <div class="form-group">
+            <div class="input-group">
+              <input class="form-control" placeholder="yyyy-mm-dd"
+                     name="dp" [(ngModel)]="dateIn" ngbDatepicker [dayTemplate]="customDay" [markDisabled]="isDisabled" #d="ngbDatepicker">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
+      <ng-template #customDay let-date let-currentMonth="currentMonth" let-selected="selected" let-disabled="disabled" let-focused="focused">
+  <span class="custom-day" [class.weekend]="isWeekend(date)" [class.focused]="focused"
+        [class.bg-primary]="selected" [class.hidden]="date.month !== currentMonth" [class.text-muted]="disabled">
+    {{ date.day }}
+  </span>
+      </ng-template>
     </div>
 
+
     <div class="form-group row">
-      <label for="checkoutDate" class="col-sm-2 col-form-label">Date de sortie</label>
+      <label for="Date" class="col-sm-2 col-form-label">Date de sortie</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="checkoutDate" name="checkoutDate" placeholder="dd/MM/yyyy" [(ngModel)]="animal.checkoutDate">
+        <form class="form-inline">
+          <div class="form-group">
+            <div class="input-group">
+              <input class="form-control" placeholder="yyyy-mm-dd"
+                     name="dp" [(ngModel)]="dateOut" ngbDatepicker [dayTemplate]="customDay" [markDisabled]="isDisabled1" #dd="ngbDatepicker">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="dd.toggle()" type="button"></button>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
+      <ng-template #customDay let-date let-currentMonth="currentMonth" let-selected="selected" let-disabled="disabled" let-focused="focused">
+  <span class="custom-day" [class.weekend]="isWeekend1(date)" [class.focused]="focused"
+        [class.bg-primary]="selected" [class.hidden]="date.month !== currentMonth" [class.text-muted]="disabled">
+    {{ date.day }}
+  </span>
+      </ng-template>
     </div>
 
     <div class="form-group row">
