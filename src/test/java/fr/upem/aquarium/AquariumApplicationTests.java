@@ -10,9 +10,9 @@ class AquariumApplicationTests {
     @Test
     void contextLoads() throws Exception {
        ActivityControllerTest activityControllerTest =  new ActivityControllerTest();
-       activityControllerTest.findAllTest();
-       activityControllerTest.findByIdTest();
-       activityControllerTest.saveTest();
+       //activityControllerTest.findAllTest();
+       //activityControllerTest.findByIdTest();
+       //activityControllerTest.saveTest();
        activityControllerTest.unauthorizationConnectionTest();
     }
 
