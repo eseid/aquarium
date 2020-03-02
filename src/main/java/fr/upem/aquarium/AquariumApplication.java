@@ -23,9 +23,9 @@ import fr.upem.aquarium.dao.PoolRepository;
 import fr.upem.aquarium.dao.SectorRepository;
 import fr.upem.aquarium.dao.SpeciesRepository;
 import fr.upem.aquarium.entities.enumeration.State;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EntityScan(basePackageClasses = { AquariumApplication.class, Jsr310JpaConverters.class })
 public class AquariumApplication implements CommandLineRunner {
 
     @Autowired

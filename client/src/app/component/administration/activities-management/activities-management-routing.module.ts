@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/acitivities-management/activities-list',
+    redirectTo: '/activities-management/activities-list',
     pathMatch: 'full'
   }
 ];

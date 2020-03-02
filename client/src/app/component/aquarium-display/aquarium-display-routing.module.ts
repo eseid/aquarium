@@ -5,6 +5,7 @@ import {SectorComponent} from './sector/sector.component';
 import {AnimalsComponent} from './animals/animals.component';
 import {ActivitiesComponent} from './activities/activities.component';
 import {AnimalsActivitiesComponent} from './animals-activities/animals-activities.component';
+import {PersonalActivitiesComponent} from './personal-activities/personal-activities.component';
 
 
 const routes: Routes = [
@@ -23,11 +24,14 @@ const routes: Routes = [
   {
     path: 'activities',
     component: ActivitiesComponent
-  }
-  ,
+  },
   {
     path: 'animals-activities/:id',
     component: AnimalsActivitiesComponent
+  },
+  {
+    path: 'personal-activities/:id',
+    component: PersonalActivitiesComponent
   }
 ];
 

@@ -1,4 +1,5 @@
 import {Role} from './role.entitie';
+import {Activity} from './activity.entitie';
 
 export class Personal {
 
@@ -11,6 +12,7 @@ export class Personal {
     public birthDay?: Date,
     public socialSecurityNumber?: string,
     public listOfRoles?: Role[],
+    public listOfActivity?: Activity[],
     public email?: string,
     public password?: string
   ) {}

@@ -4,6 +4,7 @@ import {EventManagerService} from '../../../services/event-manager.service';
 import {Nav} from '../../../utils/nav.entitie';
 import {ADMIN_MENU, EMPLOYEE_MENU, RESPONSABLE_MENU, VISITOR_MENU} from '../../../utils/app.const';
 import {Router} from '@angular/router';
+import {Personal} from '../../../entities/personal.entitie';
 
 @Component({
   selector: 'app-main-nav',
@@ -14,6 +15,7 @@ export class MainNavComponent implements OnInit {
   isNavbarCollapsed: boolean;
   navBarLinks: Nav[];
   userName: string;
+
   constructor(
     public accountService: AccountService,
     private eventManager: EventManagerService,
@@ -27,6 +29,7 @@ export class MainNavComponent implements OnInit {
     this.subscribeLoginEvent();
     this.getUserName();
   }
+
 
   collapseNavbar() {
     this.isNavbarCollapsed = true;

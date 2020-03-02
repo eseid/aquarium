@@ -88,5 +88,5 @@ export const ADMIN_MENU: Nav[] = [
     name: 'Personels',
     path: '/personals-management',
     classIcon: 'fa fa-users'
-  }
+  },
 ];

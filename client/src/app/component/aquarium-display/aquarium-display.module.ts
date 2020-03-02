@@ -8,10 +8,11 @@ import { AnimalsComponent } from './animals/animals.component';
 import {SharedModule} from '../../shared.module';
 import { ActivitiesComponent } from './activities/activities.component';
 import { AnimalsActivitiesComponent } from './animals-activities/animals-activities.component';
+import { PersonalActivitiesComponent } from './personal-activities/personal-activities.component';
 
 
 @NgModule({
-  declarations: [SectorComponent, PoolsComponent, AnimalsComponent, ActivitiesComponent, AnimalsActivitiesComponent],
+  declarations: [SectorComponent, PoolsComponent, AnimalsComponent, ActivitiesComponent, AnimalsActivitiesComponent, PersonalActivitiesComponent],
   imports: [
     CommonModule,
     AquariumDisplayRoutingModule,

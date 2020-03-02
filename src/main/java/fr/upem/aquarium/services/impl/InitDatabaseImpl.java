@@ -77,6 +77,26 @@ public class InitDatabaseImpl implements InitDatabase {
 
     public void initDabase(){
 
+        Activity activity0 = activityService.save(new Activity("nourrissage", Instant.parse("2020-03-10T10:12:35Z"),
+                true, "nourrir les tortues",
+                "data:image/jpeg;base64," + encodeImageTo64Base("activity", 4).get(0)));
+
+        Activity activity1 = activityService.save(new Activity("Découverte", Instant.parse("2020-03-11T10:12:35Z"),
+                true, "Découverte des poissons Sacrés de chine et d'Asie",
+                "data:image/jpeg;base64," + encodeImageTo64Base("activity", 4).get(1)));
+
+        Activity activity2 = activityService.save(new Activity("Bassin Tactile", Instant.parse("2020-03-12T10:12:35Z"),
+                true, "Serez-vous assez courageux pour toucher une étoile de mer, un crabe, une " +
+                "anémone de mer, ou même un œuf de requin",
+                "data:image/jpeg;base64," + encodeImageTo64Base("activity", 4).get(2)));
+
+        Activity activity3 = activityService.save(new Activity("Exploration", Instant.parse("2020-03-13T10:12:35Z"),
+                true, "Une animation de réalité virtuelle. Plongez dans des décors hypers réalistes " +
+                "allants des baleines à bosse du Pacifique jusqu’à l’exploration d’une épave... Une expérience à couper le souffle à tester !",
+                "data:image/jpeg;base64," + encodeImageTo64Base("activity", 4).get(3)));
+
+        /***********************************************************************************************************/
+
         Role role = new Role(RoleName.ROLE_EMPLOYEE);
 
         roleService.save(role);
@@ -101,6 +121,8 @@ public class InitDatabaseImpl implements InitDatabase {
         Personnal eseid = new Personnal("Eseid", "BENMAMMAR", "homme", "Noisy",
                 Instant.parse("1993-01-01T10:12:35Z"), "123345637890",
                 "eseidbenmamer@gmail.com", "eseid@06",  roles);
+
+        eseid.getListOfActivity().add(activity0);
 
         Personnal responsable = new Personnal("Responsable1", "Responsable1", "homme", "Noisy",
                 Instant.parse("1993-01-01T10:12:35Z"), "1233456378908999",
@@ -127,26 +149,6 @@ public class InitDatabaseImpl implements InitDatabase {
                 "data:image/jpeg;base64," + encodeImageTo64Base("secteur",6).get(4)));
         Sector sector5 = this.sectorRepository.save(new Sector("MER DU NORD", "La mer du nord",
                 "data:image/jpeg;base64," + encodeImageTo64Base("secteur", 6).get(5)));
-
-        /***********************************************************************************************************/
-
-        Activity activity0 = activityService.save(new Activity("nourrissage", Instant.parse("2020-03-10T10:12:35Z"),
-                true, "nourrir les tortues",
-                "data:image/jpeg;base64," + encodeImageTo64Base("activity", 4).get(0)));
-
-        Activity activity1 = activityService.save(new Activity("Découverte", Instant.parse("2020-03-11T10:12:35Z"),
-                true, "Découverte des poissons Sacrés de chine et d'Asie",
-                "data:image/jpeg;base64," + encodeImageTo64Base("activity", 4).get(1)));
-
-        Activity activity2 = activityService.save(new Activity("Bassin Tactile", Instant.parse("2020-03-12T10:12:35Z"),
-                true, "Serez-vous assez courageux pour toucher une étoile de mer, un crabe, une " +
-                "anémone de mer, ou même un œuf de requin",
-                "data:image/jpeg;base64," + encodeImageTo64Base("activity", 4).get(2)));
-
-        Activity activity3 = activityService.save(new Activity("Exploration", Instant.parse("2020-03-13T10:12:35Z"),
-                true, "Une animation de réalité virtuelle. Plongez dans des décors hypers réalistes " +
-                "allants des baleines à bosse du Pacifique jusqu’à l’exploration d’une épave... Une expérience à couper le souffle à tester !",
-                "data:image/jpeg;base64," + encodeImageTo64Base("activity", 4).get(3)));
 
         /***********************************************************************************************************/
 

@@ -18,7 +18,7 @@ export class ActivitiesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getAllSectors()
+    this.getAllSectors();
   }
 
   getAllSectors(){
