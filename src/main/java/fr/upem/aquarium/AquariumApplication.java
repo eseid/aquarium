@@ -60,7 +60,7 @@ public class AquariumApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        initDatabase.initDabase();
+       // initDatabase.initDabase();
 
         /*
         Role role = new Role(RoleName.ROLE_EMPLOYEE);
